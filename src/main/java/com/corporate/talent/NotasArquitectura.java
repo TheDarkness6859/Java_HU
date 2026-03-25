@@ -35,37 +35,13 @@ public class NotasArquitectura {
         become the code in Machine code and save it.
      */
 
-    //Java 8 class:
-    public class Empleado {
-
-        //Random id for user.
-        private long id = ThreadLocalRandom.current().nextLong(1, Long.MAX_VALUE);
-
-        //Features of each user.
-        private byte age;
-        private short office;
-        private double salary;
-        private char gender;
-        private float bonus;
-        private boolean isActive;
-        private int languageQuantity;
-
-        private String fullName;
-
-        //Constructor.
-        public Empleado(byte age, short office, double salary, char gender, float bonus,
-                        boolean isActive, int languageQuantity, String fullName){
-            this.age = age;
-            this.office = office;
-            this.salary = salary;
-            this.gender = gender;
-            this.bonus = bonus;
-            this.isActive = isActive;
-            this.languageQuantity = languageQuantity;
-            this.fullName = fullName;
-        }
-
-    }
-
+    /*
+        We can watch the difference between the old classes and the new records.
+        With the old classes, you need create the class, its variables with its type, then
+        you need create a Constructor with redundancy repeat the same code, become this in
+        Boilerplate code. In contrast, records are more simple because you only declare the
+        variables and Java internally with the complier generate a class with the file .class;
+        this class is created how final class that y close and secure.
+     */
 }
 
