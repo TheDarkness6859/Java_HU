@@ -1,4 +1,5 @@
 package com.corporate.talent;
+import java.util.concurrent.ThreadLocalRandom;
 
 /*
 This class has the documentation and the difference between java 8 (Legacy) and java 17/21 LTS
@@ -34,11 +35,37 @@ public class NotasArquitectura {
         become the code in Machine code and save it.
      */
 
+    //Java 8 class:
+    public class Empleado {
 
+        //Random id for user.
+        private long id = ThreadLocalRandom.current().nextLong(1, Long.MAX_VALUE);
 
+        //Features of each user.
+        private byte age;
+        private short office;
+        private double salary;
+        private char gender;
+        private float bonus;
+        private boolean isActive;
+        private int languageQuantity;
 
-    public static void main(String[] args){
-        System.out.println("XDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+        private String fullName;
+
+        //Constructor.
+        public Empleado(byte age, short office, double salary, char gender, float bonus,
+                        boolean isActive, int languageQuantity, String fullName){
+            this.age = age;
+            this.office = office;
+            this.salary = salary;
+            this.gender = gender;
+            this.bonus = bonus;
+            this.isActive = isActive;
+            this.languageQuantity = languageQuantity;
+            this.fullName = fullName;
+        }
+
     }
+
 }
 
