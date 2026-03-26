@@ -15,13 +15,14 @@ public class Employable {
     private float bonus;
     private boolean isActive;
     private int languageQuantity;
+    private int testPoint;
 
     //In Java, String is an object and isn't part of the primitives.
     private String fullName;
 
     //Constructor.
     public Employable(byte age, short office, double salary, char gender, float bonus,
-                      boolean isActive, int languageQuantity, String fullName){
+                      boolean isActive, int languageQuantity, String fullName, int testPoint){
         this.age = age;
         this.office = office;
         this.salary = salary;
@@ -30,6 +31,7 @@ public class Employable {
         this.isActive = isActive;
         this.languageQuantity = languageQuantity;
         this.fullName = fullName;
+        this.testPoint = testPoint;
     }
 
     public String getFullName() {
@@ -40,7 +42,7 @@ public class Employable {
         return age;
     }
 
-    public static double calculateFinalSalary(long id,double salary, float bonus) {
+    public static double calculateFinalSalary(int languageQuantity,double salary, float bonus) {
 
         double result =  (salary + (salary * (bonus * 1.10))) - (salary * 0.05);
 
@@ -49,14 +51,16 @@ public class Employable {
             (Parentheses => Multiplication => Addition => Subtraction)
          */
 
-        if(id % 2 == 0){
+        if(languageQuantity % 2 == 0){
             return result * 1.02;
         }
 
         return result;
     }
 
-    public static void main(String[] args) {
+    public static boolean validateEligibility(byte age, boolean isActive, short office, int testPoint){
+
+        return testPoint <= 85 || age >= 30 || office != 1 || !isActive;
 
     }
 }
