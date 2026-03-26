@@ -32,4 +32,18 @@ public class Employable {
         this.fullName = fullName;
     }
 
+    public static double calculateFinalSalary(double salary, float bonus) {
+
+        double bonusSalary = salary * (bonus * 1.10);
+
+        return (salary + bonusSalary) - (salary * 0.05);
+        /*
+            the order for complete this equation is:
+            (Parentheses => Multiplication => Addition => Subtraction)
+         */
+    }
+
+    public static void main(String[] args) {
+
+    }
 }
