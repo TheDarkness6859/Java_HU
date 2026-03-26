@@ -1,4 +1,7 @@
 package com.corporate.talent;
+import models.Employable;
+
+import java.util.Scanner;
 
 public class ArchitectureNotes {
 
@@ -59,6 +62,64 @@ public class ArchitectureNotes {
 
         System.out.println(textContent);
 
+        ArchitectureNotes app = new ArchitectureNotes();
+        app.credentials();
+
     }
+
+    public void credentials(){
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("What is his/her name?: ");
+        String name = input.nextLine();
+
+        System.out.print("What old are he/she?: ");
+        byte age = input.nextByte();
+
+        System.out.print("How many he/she scored in the test?: ");
+        int score = input.nextInt();
+
+        System.out.print("How much is his/her salary?: ");
+        double salary = input.nextDouble();
+
+        System.out.print("How much is his/her bonus?: ");
+        float bonus = input.nextFloat();
+
+        input.nextLine();
+
+        System.out.print("he/she have a extra bonus? (yes/no): ");
+        String response = input.nextLine();
+
+        if (response.equalsIgnoreCase("yes")){
+
+            System.out.println("Amount of extra bonus: ");
+            float extra = input.nextFloat();
+            bonus += extra;
+            input.nextLine();
+
+        }
+
+        System.out.print("what is his/her office?: ");
+        short office = input.nextShort();
+        input.nextLine();
+
+        System.out.print("He/She is active?: ");
+        String response2 = input.nextLine();
+
+        boolean active = response2.equalsIgnoreCase("yes");
+
+        System.out.print("what languages know?: ");
+        int quantity = input.nextInt();
+
+        System.out.print("What is he gender? (M/F/O): ");
+        char gender = input.next().toUpperCase().charAt(0);
+
+        Employable newEmployee = new Employable(age, office, salary, gender, bonus, active, quantity, name, score);
+
+        double finalSalary = Employable.calculateFinalSalary(quantity, salary, newEmployee.getBonus());
+        System.out.println("the final salary to " + name + "is: " + finalSalary);
+
+    }
+
 }
 
