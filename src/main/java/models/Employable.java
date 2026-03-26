@@ -92,6 +92,9 @@ public class Employable {
         }
     }
 
+    public float getBonus(){
+        return bonus;
+    }
 
 
     public static double calculateFinalSalary(int languageQuantity,double salary, float bonus) {
@@ -114,10 +117,6 @@ public class Employable {
 
         return testPoint <= 85 || age >= 30 || office != 1 || !isActive;
 
-    }
-
-    public void extraBonus(float extra){
-        this.bonus += extra;
     }
 
     public void addNewEmployee(byte age, short office, double salary, char gender, float bonus,
