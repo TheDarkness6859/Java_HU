@@ -1,11 +1,10 @@
 package com.corporate.talent;
-import java.util.concurrent.ThreadLocalRandom;
-
-/*
-This class has the documentation and the difference between java 8 (Legacy) and java 17/21 LTS
- */
 
 public class NotasArquitectura {
+
+    /*
+        This class has the documentation and the difference between java 8 (Legacy) and java 17/21 LTS
+     */
 
     /*
         Java 8 (Legacy): in this version we need to know the syntax and structure of the classes,
@@ -43,5 +42,19 @@ public class NotasArquitectura {
         variables and Java internally with the complier generate a class with the file .class;
         this class is created how final class that y close and secure.
      */
+
+    public static void main(String[] args) {
+        String textContent = """
+                ====================================================
+                        SYSTEM: CORPORATE TALENT MANAGEMENT
+                ====================================================
+                        [Welcome to the main core system]
+                
+                                Status: Online
+                ====================================================
+                """;
+
+        System.out.println(textContent);
+    }
 }
 

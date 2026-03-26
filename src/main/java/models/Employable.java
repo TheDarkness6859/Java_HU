@@ -2,7 +2,7 @@ package models;
 import java.util.concurrent.ThreadLocalRandom;
 
 //Java 8 class:
-public class Empleado {
+public class Employable {
 
     //Random id for user.
     private long id = ThreadLocalRandom.current().nextLong(1, Long.MAX_VALUE);
@@ -20,8 +20,8 @@ public class Empleado {
     private String fullName;
 
     //Constructor.
-    public Empleado(byte age, short office, double salary, char gender, float bonus,
-                    boolean isActive, int languageQuantity, String fullName){
+    public Employable(byte age, short office, double salary, char gender, float bonus,
+                      boolean isActive, int languageQuantity, String fullName){
         this.age = age;
         this.office = office;
         this.salary = salary;
