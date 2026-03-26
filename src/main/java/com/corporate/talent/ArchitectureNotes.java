@@ -1,6 +1,6 @@
 package com.corporate.talent;
 
-public class NotasArquitectura {
+public class ArchitectureNotes {
 
     /*
         This class has the documentation and the difference between java 8 (Legacy) and java 17/21 LTS
@@ -42,19 +42,5 @@ public class NotasArquitectura {
         variables and Java internally with the complier generate a class with the file .class;
         this class is created how final class that y close and secure.
      */
-
-    public static void main(String[] args) {
-        String textContent = """
-                ====================================================
-                        SYSTEM: CORPORATE TALENT MANAGEMENT
-                ====================================================
-                        [Welcome to the main core system]
-                
-                                Status: Online
-                ====================================================
-                """;
-
-        System.out.println(textContent);
-    }
 }
 
