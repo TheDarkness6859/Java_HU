@@ -8,7 +8,7 @@ public class Employable {
     private long id = ThreadLocalRandom.current().nextLong(1, Long.MAX_VALUE);
 
     //Features of each user (Primitives).
-    private byte age;
+    private final byte age;
     private short office;
     private double salary;
     private char gender;
@@ -18,7 +18,7 @@ public class Employable {
     private int testPoint;
 
     //In Java, String is an object and isn't part of the primitives.
-    private String fullName;
+    private final String fullName;
 
     //Constructor.
     public Employable(byte age, short office, double salary, char gender, float bonus,
@@ -34,12 +34,8 @@ public class Employable {
         this.testPoint = testPoint;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public byte getAge() {
-        return age;
+    public float getBonus(){
+        return bonus;
     }
 
     public static double calculateFinalSalary(int languageQuantity,double salary, float bonus) {
@@ -62,5 +58,9 @@ public class Employable {
 
         return testPoint <= 85 || age >= 30 || office != 1 || !isActive;
 
+    }
+
+    public void extraBonus(float extra){
+        this.bonus += extra;
     }
 }
