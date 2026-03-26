@@ -1,4 +1,5 @@
 package com.corporate.talent;
+import models.BussisnesRecord;
 import models.Employable;
 
 import java.util.Scanner;
@@ -73,7 +74,7 @@ public class ArchitectureNotes {
         System.out.print("What is his/her name?: ");
         String name = input.nextLine();
 
-        System.out.print("What old are he/she?: ");
+        System.out.print("What old is he/she?: ");
         byte age = input.nextByte();
 
         System.out.print("How many he/she scored in the test?: ");
@@ -103,7 +104,7 @@ public class ArchitectureNotes {
         short office = input.nextShort();
         input.nextLine();
 
-        System.out.print("He/She is active?: ");
+        System.out.print("He/She is active? (yes/no): ");
         String response2 = input.nextLine();
 
         boolean active = response2.equalsIgnoreCase("yes");
@@ -117,7 +118,7 @@ public class ArchitectureNotes {
         Employable newEmployee = new Employable(age, office, salary, gender, bonus, active, quantity, name, score);
 
         double finalSalary = Employable.calculateFinalSalary(quantity, salary, newEmployee.getBonus());
-        System.out.println("the final salary to " + name + "is: " + finalSalary);
+        System.out.printf("the final salary to %s is: %.2f%n", name, finalSalary);
 
     }
 
