@@ -42,5 +42,23 @@ public class ArchitectureNotes {
         variables and Java internally with the complier generate a class with the file .class;
         this class is created how final class that y close and secure.
      */
+
+    public static void main(String[] args) {
+
+        String textContent = """
+
+            ====================================================
+                    SYSTEM: CORPORATE TALENT MANAGEMENT
+            ====================================================
+                    [Welcome to the main core system]
+
+                            Status: Online
+            ====================================================
+
+            """;
+
+        System.out.println(textContent);
+
+    }
 }
 
