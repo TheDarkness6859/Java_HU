@@ -1,4 +1,5 @@
 package models;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 //Java 8 class:
@@ -8,7 +9,7 @@ public class Employable {
     private long id = ThreadLocalRandom.current().nextLong(1, Long.MAX_VALUE);
 
     //Features of each user (Primitives).
-    private final byte age;
+    private byte age;
     private short office;
     private double salary;
     private char gender;
@@ -23,20 +24,75 @@ public class Employable {
     //Constructor.
     public Employable(byte age, short office, double salary, char gender, float bonus,
                       boolean isActive, int languageQuantity, String fullName, int testPoint){
-        this.age = age;
-        this.office = office;
-        this.salary = salary;
-        this.gender = gender;
+        setAge(age);
+        setOffice(office);
+        setSalary(salary);
+        setGender(gender);
         this.bonus = bonus;
-        this.isActive = isActive;
-        this.languageQuantity = languageQuantity;
+        setTestPoint(testPoint);
+        setActive(isActive);
+        setLanguageQuantity(languageQuantity);
         this.fullName = fullName;
-        this.testPoint = testPoint;
     }
 
-    public float getBonus(){
-        return bonus;
+    public void setAge(byte age) {
+        if (age <= 0 || age >= 105) {
+            System.out.println("it can't possible");
+        }else{
+            this.age = age;
+        }
     }
+
+    public void setOffice(short office) {
+        if (office <= 0 || office >= 105) {
+            System.out.println("I don't believe that");
+        }else{
+            this.office = office;
+        }
+    }
+
+    public void setSalary(double salary) {
+        if (salary <= 0) {
+            System.out.println("I don't believe that");
+        }else{
+            this.salary = salary;
+        }
+    }
+
+    public void setGender(char gender) {
+        if (gender == 'M' || gender == 'F' || gender == 'O'){
+            this.gender = gender;
+        }else{
+            System.out.println("It genre not exist");
+        }
+    }
+
+    public void setActive(boolean isActive){
+        if(isActive && this.testPoint < 50){
+            System.out.println("no can't be active with low score, sorry.");
+            this.isActive = false;
+        }else {
+            this.isActive = isActive;
+        }
+    }
+
+    public void setLanguageQuantity(int languageQuantity){
+        if (languageQuantity < 0 || languageQuantity > 100){
+            System.out.println("It is impossible");
+        }else{
+            this.languageQuantity = languageQuantity;
+        }
+    }
+
+    public void setTestPoint(int testPoint){
+        if (testPoint < 0 || testPoint > 100){
+            System.out.println("It is impossible");
+        }else{
+            this.testPoint = testPoint;
+        }
+    }
+
+
 
     public static double calculateFinalSalary(int languageQuantity,double salary, float bonus) {
 
@@ -62,5 +118,13 @@ public class Employable {
 
     public void extraBonus(float extra){
         this.bonus += extra;
+    }
+
+    public void addNewEmployee(byte age, short office, double salary, char gender, float bonus,
+                               boolean isActive, int languageQuantity, String fullName, int testPoint){
+
+        Scanner input = new Scanner(System.in);
+
+
     }
 }
