@@ -32,15 +32,28 @@ public class Employable {
         this.fullName = fullName;
     }
 
-    public static double calculateFinalSalary(double salary, float bonus) {
+    public String getFullName() {
+        return fullName;
+    }
 
-        double bonusSalary = salary * (bonus * 1.10);
+    public byte getAge() {
+        return age;
+    }
 
-        return (salary + bonusSalary) - (salary * 0.05);
+    public static double calculateFinalSalary(long id,double salary, float bonus) {
+
+        double result =  (salary + (salary * (bonus * 1.10))) - (salary * 0.05);
+
         /*
             the order for complete this equation is:
             (Parentheses => Multiplication => Addition => Subtraction)
          */
+
+        if(id % 2 == 0){
+            return result * 1.02;
+        }
+
+        return result;
     }
 
     public static void main(String[] args) {
