@@ -19,7 +19,7 @@ public class ArchitectureNotes {
         Java 17/21 LTS: with these versions we have a new technologies like the Records that allow us
         to create classes simpler and practical with only one line of code and are unchanging (without setters).
         this feature is only for transport data.Java automatically create the accessors.
-        But no only this tool too the GC(Garbage Collector) and the JVM(Java Virtual Machine).
+        But no only this tool, also the GC(Garbage Collector) and the JVM(Java Virtual Machine).
         This tools help us to improve the quality of our code and our
         memory management, because with the GC we won more efficiency
         to cleaning our information with the Heap memory.
