@@ -1,5 +1,5 @@
 package com.corporate.talent;
-import models.BussisnesRecord;
+import models.BusinessRecord;
 import models.Employable;
 
 import java.util.Scanner;
@@ -83,7 +83,7 @@ public class ArchitectureNotes {
             what is the variable with the null or problem.
          */
 
-        BussisnesRecord data = new BussisnesRecord("Riwi", 800123456, 2000, true);
+        BusinessRecord data = new BusinessRecord("Riwi", 800123456, 2000, true);
         System.out.println("Registered business: " + data.name());
 
         Employable empA = new Employable((byte)20, (short)10, 1000.0, 'M', 0.1f, true, 2, "Test", 80);
