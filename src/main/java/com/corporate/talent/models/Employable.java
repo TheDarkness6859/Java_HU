@@ -35,6 +35,13 @@ public class Employable {
         this.fullName = fullName;
     }
 
+    public float getBonus(){
+        return bonus;
+    }
+    public double getSalary() {return salary;}
+    public int getLanguageQuantity() {return languageQuantity;}
+    public String getFullName() {return fullName;}
+
     public void setAge(byte age) {
         if (age <= 0 || age >= 105) {
             System.out.println("it can't possible");
@@ -91,11 +98,6 @@ public class Employable {
             this.testPoint = testPoint;
         }
     }
-
-    public float getBonus(){
-        return bonus;
-    }
-
 
     public static double calculateFinalSalary(int languageQuantity,double salary, float bonus) {
 
