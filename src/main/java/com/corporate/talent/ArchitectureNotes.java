@@ -1,8 +1,10 @@
 package com.corporate.talent;
+
 import com.corporate.talent.models.BusinessRecord;
 import com.corporate.talent.models.Employable;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class ArchitectureNotes {
 
@@ -151,7 +153,6 @@ public class ArchitectureNotes {
 
         return new Employable(age, office, salary, gender, bonus, active, quantity, name, score);
 
-
     }
 
     public void salary (Employable newEmployee) {
@@ -176,35 +177,42 @@ public class ArchitectureNotes {
                 """
         ;
 
-        System.out.println(console);
         Scanner dec = new Scanner(System.in);
         Employable e = null;
         int desc;
 
         do {
+            try {
+                System.out.println(console);
+                System.out.println("Which is your decision?:");
+                desc = dec.nextInt();
+                dec.nextLine();
 
-            System.out.println("Which is your decision?:");
-            desc = dec.nextInt();
-            dec.nextLine();
+                switch (desc) {
+                    case 1:
+                        e = credentials();
+                        System.out.println("Employee created!");
+                        break;
+                    case 2:
+                        if (e != null){
+                            salary(e);
+                        }
+                        else{
+                            System.out.println("You don't have a employee.");
+                        }
+                        break;
+                    case 3:
+                        System.out.println("XD, what are you here?");
+                        break;
+                    case 4:
+                        break;
+                }
+            }catch (InputMismatchException err){
+                System.err.println("Please enter a number.");
+                dec.nextLine();
+                desc = 0;
+            }
 
-            switch (desc) {
-                case 1:
-                    e = credentials();
-                    break;
-                case 2:
-                    if (e != null){
-                        salary(e);
-                    }
-                    else{
-                        System.out.println("You don't have a employee.");
-                    }
-                    break;
-                case 3:
-                    System.out.println("XD, what are you here?");
-                    break;
-                case 4:
-                    break;
-            };
         }while (desc != 4);
     }
 }
