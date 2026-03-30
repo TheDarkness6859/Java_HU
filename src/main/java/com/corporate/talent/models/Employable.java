@@ -1,4 +1,4 @@
-package models;
+package com.corporate.talent.models;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 

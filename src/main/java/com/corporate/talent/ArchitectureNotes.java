@@ -1,6 +1,6 @@
 package com.corporate.talent;
-import models.BusinessRecord;
-import models.Employable;
+import com.corporate.talent.models.BusinessRecord;
+import com.corporate.talent.models.Employable;
 
 import java.util.Scanner;
 

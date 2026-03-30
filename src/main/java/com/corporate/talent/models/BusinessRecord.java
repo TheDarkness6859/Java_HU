@@ -1,4 +1,4 @@
-package models;
+package com.corporate.talent.models;
 
 //Java 17/21 Record
 public record BusinessRecord(String name, long NIT, int foundationAge,
