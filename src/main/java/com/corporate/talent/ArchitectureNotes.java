@@ -99,11 +99,10 @@ public class ArchitectureNotes {
             here we can define our own rules to compare, this allows Java to confirm if two different instances (new) have the
             same logic.
          */
-
-        app.credentials();
+        app.navConsole();
     }
 
-    public void credentials(){
+    public Employable credentials(){
         Scanner input = new Scanner(System.in);
 
         System.out.print("What is his/her name?: ");
@@ -150,12 +149,63 @@ public class ArchitectureNotes {
         System.out.print("What is he gender? (M/F/O): ");
         char gender = input.next().toUpperCase().charAt(0);
 
-        Employable newEmployee = new Employable(age, office, salary, gender, bonus, active, quantity, name, score);
+        return new Employable(age, office, salary, gender, bonus, active, quantity, name, score);
 
-        double finalSalary = Employable.calculateFinalSalary(quantity, salary, newEmployee.getBonus());
-        System.out.printf("the final salary to %s is: %.2f%n", name, finalSalary);
 
     }
 
+    public void salary (Employable newEmployee) {
+
+        double finalSalary = Employable.calculateFinalSalary(newEmployee.getLanguageQuantity(),
+                newEmployee.getSalary(), newEmployee.getBonus());
+        System.out.printf("the final salary to %s is: %.2f%n", newEmployee.getFullName(), finalSalary);
+    };
+
+
+    public void navConsole() {
+
+        String console = """
+                -----------------------------
+                |          MENU             |
+                -----------------------------
+                | 1) Create a employee      |
+                | 2) Watch employee salary  |
+                | 3) Salary category        |
+                | 4) Exit                   |
+                -----------------------------
+                """
+        ;
+
+        System.out.println(console);
+        Scanner dec = new Scanner(System.in);
+        Employable e = null;
+        int desc;
+
+        do {
+
+            System.out.println("Which is your decision?:");
+            desc = dec.nextInt();
+            dec.nextLine();
+
+            switch (desc) {
+                case 1:
+                    e = credentials();
+                    break;
+                case 2:
+                    if (e != null){
+                        salary(e);
+                    }
+                    else{
+                        System.out.println("You don't have a employee.");
+                    }
+                    break;
+                case 3:
+                    System.out.println("XD, what are you here?");
+                    break;
+                case 4:
+                    break;
+            };
+        }while (desc != 4);
+    }
 }
 
