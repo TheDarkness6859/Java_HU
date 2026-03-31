@@ -121,11 +121,4 @@ public class Employable {
 
     }
 
-    public void addNewEmployee(byte age, short office, double salary, char gender, float bonus,
-                               boolean isActive, int languageQuantity, String fullName, int testPoint){
-
-        Scanner input = new Scanner(System.in);
-
-
-    }
 }
