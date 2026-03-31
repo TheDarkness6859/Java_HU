@@ -202,7 +202,7 @@ public class ArchitectureNotes {
                         }
                         break;
                     case 3:
-                        System.out.println("XD, what are you here?");
+                        obtainSalaryCategory(e);
                         break;
                     case 4:
                         break;
@@ -214,6 +214,25 @@ public class ArchitectureNotes {
             }
 
         }while (desc != 4);
+    }
+
+    public void obtainSalaryCategory(Employable employee) {
+
+        switch (employee){
+            case null -> System.out.println("You don't have an employee");
+
+            case Employable e when e.getSalary() > 1000 ->
+                    System.out.printf("%s you are senior employee!", e.getFullName())
+            ;
+
+            case Employable e when e.getSalary() >= 500 ->
+                    System.out.printf("%s you are a mid-level employee!", e.getFullName())
+            ;
+
+            case  Employable e ->
+                    System.out.printf("%s you are a junior employee!", e.getFullName())
+            ;
+        }
     }
 }
 
