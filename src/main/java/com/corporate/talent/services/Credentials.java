@@ -16,24 +16,24 @@ public class Credentials {
             try {
 
                 System.out.print("What is his/her name?: ");
-                String name = input.nextLine();
+                var name = input.nextLine();
 
                 System.out.print("What old is he/she?: ");
-                byte age = input.nextByte();
+                var age = input.nextByte();
 
                 System.out.print("How many he/she scored in the test?: ");
-                int score = input.nextInt();
+                var score = input.nextInt();
 
                 System.out.print("How much is his/her salary?: ");
-                double salary = input.nextDouble();
+                var salary = input.nextDouble();
 
                 System.out.print("How much is his/her bonus?: ");
-                float bonus = input.nextFloat();
+                var bonus = input.nextFloat();
 
                 input.nextLine();
 
                 System.out.print("he/she have a extra bonus? (yes/no): ");
-                String response = input.nextLine();
+                var response = input.nextLine();
 
                 if (response.equalsIgnoreCase("yes")) {
 
