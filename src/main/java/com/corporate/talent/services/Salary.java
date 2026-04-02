@@ -37,19 +37,24 @@ public class Salary {
             Guarded Pattern(when). Now you can create a case of null, verification the type of object in the case.
          */
 
+        NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(Locale.US);
+
         switch (employee){
             case null -> System.out.println("You don't have an employee");
 
             case Employable e when e.getSalary() > 1000 ->
-                    System.out.printf("%s you are senior employee!, your salary: %.2f", e.getFullName(), e.getSalary())
+                    System.out.printf("%s you are senior employee!, your salary: %s%n"
+                            , e.getFullName(), dollarFormat.format(e.getSalary()))
             ;
 
             case Employable e when e.getSalary() >= 500 ->
-                    System.out.printf("%s you are a mid-level employee!, your salary: %.2f", e.getFullName(), e.getSalary())
+                    System.out.printf("%s you are a mid-level employee!, your salary: %s%n"
+                            , e.getFullName(), dollarFormat.format(e.getSalary()))
             ;
 
             case  Employable e ->
-                    System.out.printf("%s you are a junior employee!, your salary: %.2f", e.getFullName(), e.getSalary())
+                    System.out.printf("%s you are a junior employee!, your salary: %s%n"
+                            , e.getFullName(), dollarFormat.format(e.getSalary()))
             ;
         }
     }
