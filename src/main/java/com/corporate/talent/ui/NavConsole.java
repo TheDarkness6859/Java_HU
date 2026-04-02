@@ -2,6 +2,7 @@ package com.corporate.talent.ui;
 
 import com.corporate.talent.models.Employable;
 import com.corporate.talent.services.Credentials;
+import com.corporate.talent.services.Performance;
 import com.corporate.talent.services.Salary;
 
 import java.util.InputMismatchException;
@@ -12,6 +13,7 @@ public class NavConsole {
     //Instances
     Credentials cre = new Credentials();
     Salary sal = new Salary();
+    Performance per = new Performance();
 
     public void navConsole() {
 
@@ -22,7 +24,8 @@ public class NavConsole {
                 | 1) Create a employee      |
                 | 2) Watch employee salary  |
                 | 3) Salary category        |
-                | 4) Exit                   |
+                | 4) Employee notes         |
+                | 5) Exit                   |
                 -----------------------------
                 """
                 ;
@@ -46,8 +49,7 @@ public class NavConsole {
                     case 2:
                         if (e != null){
                             sal.salary(e);
-                        }
-                        else{
+                        }else {
                             System.out.println("You don't have a employee.");
                         }
                         break;
@@ -55,6 +57,13 @@ public class NavConsole {
                         sal.obtainSalaryCategory(e);
                         break;
                     case 4:
+                        if (e != null){
+                            per.EmployeeData(e);
+                        }else {
+                            System.out.println("You don't have a employee.");
+                        }
+                        break;
+                    case 5:
                         break;
                 }
             }catch (InputMismatchException err){
@@ -63,6 +72,6 @@ public class NavConsole {
                 desc = 0;
             }
 
-        }while (desc != 4);
+        }while (desc != 5);
     }
 }
