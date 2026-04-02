@@ -33,7 +33,8 @@ public class Performance {
             }
 
             double average = totalNotes / notes[u].length;
-            printData (name[u], totalNotes, average, (int) average);
+            String status = (average >= 3.5) ? "PROMOTED" : "NOT PROMOTED";
+            printData (name[u], totalNotes, average, (int) average, status);
 
         }
 
@@ -59,7 +60,7 @@ public class Performance {
         }
     }
 
-    public void printData(String name, double total, double average, int rounded){
+    public void printData(String name, double total, double average, int rounded, String status){
 
         System.out.printf("""
                 --------Final result--------
@@ -67,8 +68,9 @@ public class Performance {
                 Total notes: %.2f
                 Average: %.2f
                 Total result: %d
+                Status: %s
                 ----------------------------
-                """, name, total, average, rounded)
+                """, name, total, average, rounded, status)
         ;
 
     }
