@@ -19,31 +19,43 @@ public class Performance {
 
         Scanner input = new Scanner(System.in);
 
-        try {
+        System.out.println("---Employee Data---");
 
-            System.out.println("---Employee Data---");
+        for (int u = 0; u < name.length; u ++){
 
-            for (int u = 0; u < name.length; u ++){
+            double totalNotes = 0;
 
-                double totalNotes = 0;
+            for (int d = 0; d < notes[u].length; d++){
 
-                for (int d = 0; d < notes[u].length; d++){
-
-                    System.out.println("Enter the note of trimester " + (d + 1) + ":");
-                    notes[u][d] = input.nextDouble();
-                    totalNotes += notes[u][d];
-
-                }
-
-                double average = totalNotes / notes[u].length;
-
-                printData (name[u], totalNotes, average, (int) average);
+                notes[u][d] = validNotes(input, d + 1);
+                totalNotes += notes[u][d];
 
             }
 
-        }catch (InputMismatchException err){
-            System.err.print("You can't do it, try put the value with ',' or '.' ");
-            input.nextLine();
+            double average = totalNotes / notes[u].length;
+            printData (name[u], totalNotes, average, (int) average);
+
+        }
+
+    }
+
+    public double validNotes (Scanner input, int trimester){
+        while(true){
+            try {
+                System.out.println("Enter the note of trimester " + trimester + ":");
+                double note = input.nextDouble();
+
+                if (note > 5 || note < 0){
+                    System.err.println("Error: The note must be between 0 and 5.");
+                    continue;
+                }
+
+                return note;
+
+            }catch (InputMismatchException err){
+                System.err.print("You can't do it, try put the value with ',' or '.' ");
+                input.nextLine();
+            }
         }
     }
 
