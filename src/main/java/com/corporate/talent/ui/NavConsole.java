@@ -1,7 +1,6 @@
 package com.corporate.talent.ui;
 
 import com.corporate.talent.models.Employable;
-import com.corporate.talent.services.Credentials;
 import com.corporate.talent.services.Performance;
 import com.corporate.talent.services.Salary;
 
@@ -11,7 +10,7 @@ import java.util.Scanner;
 public class NavConsole {
 
     //Instances
-    Credentials cre = new Credentials();
+    EmployeeUI cre = new EmployeeUI();
     Salary sal = new Salary();
     Performance per = new Performance();
 
