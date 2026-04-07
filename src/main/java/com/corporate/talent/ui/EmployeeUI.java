@@ -84,10 +84,27 @@ public class EmployeeUI {
     public long search(){
 
         Scanner input = new Scanner(System.in);
+        byte tries = 3;
 
-        System.out.println("what is he/she id?: ");
-        return input.nextLong();
+        while (tries > 0){
 
+            try {
+
+                System.out.println("what is he/she id?: ");
+                return input.nextLong();
+
+            } catch(InputMismatchException err){
+
+                System.err.print("Invalid input! Please enter only numbers.");
+                input.nextLine();
+                tries -= 1;
+
+            }
+
+        }
+
+        System.out.println("No more attempts left.");
+        return -1;
     }
 
 }
