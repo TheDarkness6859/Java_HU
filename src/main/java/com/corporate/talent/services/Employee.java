@@ -51,5 +51,32 @@ public class Employee {
 
     }
 
+    public void editEmployee (long id){
+
+        if (idEmployee.containsKey(id)) {
+
+            EmployeeUI cre = new EmployeeUI();
+            Employable updatedData = cre.credentials();
+
+            updatedData.setId(id);
+
+            idEmployee.put(id, updatedData);
+
+            for (int i = 0; i < employees.size(); i++ ){
+
+                if (employees.get(i).getId() == id){
+                    employees.set(i, updatedData);
+                    break;
+                }
+            }
+
+            System.out.println("Employee updated correctly");
+
+        }else {
+
+            System.out.println("The Employee ID doesnt exist'");
+
+        }
+    }
 }
 
