@@ -1,11 +1,11 @@
-package com.corporate.talent.services;
+package com.corporate.talent.ui;
 
 import com.corporate.talent.models.Employable;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Credentials {
+public class EmployeeUI {
 
     public Employable credentials() {
 
@@ -80,4 +80,14 @@ public class Credentials {
             }
         }
     }
+
+    public long search(){
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("what is he/she id?: ");
+        return input.nextLong();
+
+    }
+
 }
