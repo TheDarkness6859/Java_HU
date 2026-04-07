@@ -25,5 +25,13 @@ public class Employee {
 
     }
 
+    public void addEmployee(Employable emp) {
+
+        employees.add(emp);
+        idEmployee.put(emp.getId(), emp);
+        System.out.println("Employee added correctly");
+
+    }
+
 }
 
