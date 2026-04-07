@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class EmployeeUI {
 
-    public Employable credentials() {
+    Scanner input = new Scanner(System.in);
 
-        Scanner input = new Scanner(System.in);
+    public Employable credentials() {
 
         while (true) {
 
@@ -70,6 +70,8 @@ public class EmployeeUI {
                 System.out.print("What is he gender? (M/F/O): ");
                 char gender = input.next().toUpperCase().charAt(0);
 
+                input.nextLine();
+
                 return new Employable(age, office, salary, gender, bonus, active, quantity, name, score);
 
             } catch (InputMismatchException err){
@@ -83,21 +85,22 @@ public class EmployeeUI {
 
     public long search(){
 
-        Scanner input = new Scanner(System.in);
         byte tries = 3;
 
         while (tries > 0){
 
             try {
 
-                System.out.println("what is he/she id?: ");
-                return input.nextLong();
+                System.out.println("what is he/she id? (Attempts remaining: " + tries + "): ");
+                long id = input.nextLong();
+                input.nextLine();
+                return id;
 
             } catch(InputMismatchException err){
 
                 System.err.print("Invalid input! Please enter only numbers.");
                 input.nextLine();
-                tries -= 1;
+                tries --;
 
             }
 
