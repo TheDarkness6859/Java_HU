@@ -1,13 +1,20 @@
 package com.corporate.talent.ui;
 
 import com.corporate.talent.models.Employable;
+import com.corporate.talent.services.Employee;
 
+import java.io.Console;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class EmployeeUI {
 
     Scanner input = new Scanner(System.in);
+    Employee s;
+
+    public EmployeeUI(Employee employeeShared){
+        this.s = employeeShared;
+    }
 
     public Employable credentials() {
 
@@ -110,4 +117,54 @@ public class EmployeeUI {
         return -1;
     }
 
+    public void employeeDec(){
+
+        int desc;
+        long id;
+        Employable e = null;
+
+        do {
+            try{
+
+                ConsoleBanners.managementConsole();
+                System.out.println("Which is your decision?:");
+                desc = input.nextInt();
+                input.nextLine();
+
+                switch (desc){
+                    case 1:
+                        e = credentials();
+                        s.addEmployee(e);
+                        break;
+                    case 2:
+                        s.getAllEmployees();
+                        break;
+                    case 3:
+                        id = search();
+                        s.removeEmployee(id);
+                        break;
+                    case 4:
+                        id = search();
+                        if (s.exists(id)){
+                            System.out.println("--- Edit Employee Data ---");
+                            Employable data = credentials();
+                            s.editEmployee(id, data);
+                        }else{
+                            System.out.println("The employee ID doesn't exist.");
+                        }
+                        break;
+                    case 5:
+                        break;
+                }
+
+            }catch (InputMismatchException err){
+
+                System.err.print("Invalid input! Please enter only numbers.");
+                input.nextLine();
+                desc = 0;
+
+            }
+        } while(desc != 5);
+
+    }
 }
