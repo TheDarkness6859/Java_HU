@@ -51,15 +51,11 @@ public class Employee {
 
     }
 
-    public void editEmployee (long id){
+    public void editEmployee (long id, Employable updatedData){
 
         if (idEmployee.containsKey(id)) {
 
-            EmployeeUI cre = new EmployeeUI();
-            Employable updatedData = cre.credentials();
-
             updatedData.setId(id);
-
             idEmployee.put(id, updatedData);
 
             for (int i = 0; i < employees.size(); i++ ){
@@ -77,6 +73,24 @@ public class Employee {
             System.out.println("The Employee ID doesnt exist'");
 
         }
+    }
+
+    public Employable findEmployee(long id) {
+
+        Employable e = idEmployee.get(id);
+
+        if (e != null){
+            System.out.println("Employee found, his/her name is:" + e.getFullName());
+            return e;
+        }else {
+            System.out.println("Employee don't found!");
+            return null;
+        }
+
+    }
+
+    public boolean exists(long id) {
+        return idEmployee.containsKey(id);
     }
 }
 
