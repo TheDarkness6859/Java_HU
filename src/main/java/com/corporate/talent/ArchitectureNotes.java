@@ -1,6 +1,7 @@
 package com.corporate.talent;
 
 import com.corporate.talent.services.Laboratory;
+import com.corporate.talent.ui.ConsoleBanners;
 import com.corporate.talent.ui.NavConsole;
 
 
@@ -53,20 +54,7 @@ public class ArchitectureNotes {
         Laboratory lab = new Laboratory();
         NavConsole console = new NavConsole();
 
-        String textContent = """
-
-            ====================================================
-                    SYSTEM: CORPORATE TALENT MANAGEMENT
-            ====================================================
-                    [Welcome to the main core system]
-
-                            Status: Online
-            ====================================================
-
-            """;
-
-        System.out.println(textContent);
-
+        ConsoleBanners.banner();
         console.navConsole();
         lab.laboratory();
 
