@@ -41,6 +41,11 @@ public class Employable {
     public double getSalary() {return salary;}
     public int getLanguageQuantity() {return languageQuantity;}
     public String getFullName() {return fullName;}
+    public long getId() {return id;}
+
+    public void setId(long id){
+        this.id = id;
+    }
 
     public void setAge(byte age) {
         if (age <= 0 || age >= 105) {
