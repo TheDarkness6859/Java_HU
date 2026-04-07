@@ -5,7 +5,7 @@ import com.corporate.talent.ui.ConsoleBanners;
 import com.corporate.talent.ui.NavConsole;
 
 
-public class ArchitectureNotes {
+public class Main {
 
     /*
         This class has the documentation and the difference between java 8 (Legacy) and java 17/21 LTS
