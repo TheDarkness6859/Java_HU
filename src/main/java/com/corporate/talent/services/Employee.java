@@ -33,5 +33,23 @@ public class Employee {
 
     }
 
+    public void removeEmployee(long id){
+
+        Employable emp = idEmployee.get(id);
+
+        if (emp != null){
+
+            idEmployee.remove(id);
+            employees.remove(emp);
+            System.out.println("Employee deleted correctly");
+
+        }else {
+
+            System.out.println("The employee doesn't exist");
+
+        }
+
+    }
+
 }
 
