@@ -1,11 +1,10 @@
 package com.corporate.talent.models;
-import java.util.concurrent.ThreadLocalRandom;
 
 //Java 8 class:
 public class Employable {
 
     //Random id for user.
-    private long id = ThreadLocalRandom.current().nextLong(1, Long.MAX_VALUE);
+    private long id = 0L;
 
     //Features of each user (Primitives).
     private byte age;
