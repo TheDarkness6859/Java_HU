@@ -12,7 +12,8 @@ public class NavConsole {
 
     //Instances
     Employee  employee = new Employee();
-    EmployeeUI interaction = new EmployeeUI(employee);
+    EmployeeUI intEmp = new EmployeeUI(employee);
+    BusinessUI intBus = new BusinessUI();
     Salary sal = new Salary();
     Performance per = new Performance();
 
@@ -32,34 +33,37 @@ public class NavConsole {
 
                 switch (desc) {
                     case 1:
-                        interaction.employeeDec();
+                        intEmp.employeeDec();
                         break;
                     case 2:
-                        id = interaction.search();
-                        e = employee.findEmployee(id);
+                        intBus.businessDec();
                         break;
                     case 3:
+                        id = intEmp.search();
+                        e = employee.findEmployee(id);
+                        break;
+                    case 4:
                         if (e != null){
                             sal.salary(e);
                         }else {
                             System.out.println("Please, search for an employee first (Option 2).");
                         }
                         break;
-                    case 4:
+                    case 5:
                         if (e != null){
                             sal.obtainSalaryCategory(e);
                         }else {
                             System.out.println("Please, search for an employee first (Option 2).");
                         }
                         break;
-                    case 5:
+                    case 6:
                         if (e != null){
                             per.EmployeeData(e);
                         }else {
                             System.out.println("Please, search for an employee first (Option 2).");
                         }
                         break;
-                    case 6:
+                    case 7:
                         break;
                 }
             }catch (InputMismatchException err){
@@ -68,6 +72,6 @@ public class NavConsole {
                 desc = 0;
             }
 
-        }while (desc != 6);
+        }while (desc != 7);
     }
 }
