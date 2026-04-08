@@ -126,7 +126,7 @@ public class EmployeeUI {
         do {
             try{
 
-                ConsoleBanners.managementConsole();
+                ConsoleBanners.managementEmployee();
                 System.out.println("Which is your decision?:");
                 desc = input.nextInt();
                 input.nextLine();
