@@ -1,14 +1,14 @@
 package com.corporate.talent.services;
 
 import com.corporate.talent.models.Employable;
-import com.corporate.talent.ui.EmployeeUI;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Employee {
 
-    private ArrayList<Employable> employees = new ArrayList<>();
-    private HashMap<Long, Employable> idEmployee = new HashMap<>();
+    private final ArrayList<Employable> employees = new ArrayList<>();
+    private final HashMap<Long, Employable> idEmployee = new HashMap<>();
 
     public void getAllEmployees() {
 
@@ -26,6 +26,9 @@ public class Employee {
     }
 
     public void addEmployee(Employable emp) {
+
+        long id = ThreadLocalRandom.current().nextLong(1, Long.MAX_VALUE);
+        emp.setId(id);
 
         employees.add(emp);
         idEmployee.put(emp.getId(), emp);
