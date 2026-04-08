@@ -42,7 +42,7 @@ public class NavConsole {
                         if (e != null){
                             sal.salary(e);
                         }else {
-                            System.out.println("You don't have a employee.");
+                            System.out.println("Please, search for an employee first (Option 2).");
                         }
                         break;
                     case 4:
