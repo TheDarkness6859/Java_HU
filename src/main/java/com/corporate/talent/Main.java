@@ -15,7 +15,8 @@ public class Main {
 
         ConsoleBanners.banner();
         console.navConsole();
-        lab.laboratory();
+
+        //lab.laboratory();
 
     }
 }
