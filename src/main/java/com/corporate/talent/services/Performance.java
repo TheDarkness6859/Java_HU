@@ -35,17 +35,7 @@ public class Performance {
             double average = totalNotes / notes[u].length;
             String status = (average >= 3.5) ? "PROMOTED" : "NOT PROMOTED";
             printData (name[u], totalNotes, average, (int) average, status);
-            /*
-            In Java, we have something called "Narrowing", basically transform a big object (64 bits) into a
-            small box (32 bits), where you do this "(int) average" happen two critical things.
 
-            1.Overflow: A double can save larger numbers than int. if the double is more than the limit of
-            int (2,147,483,647), when you transform it into int, the value is broken, and only you had the biggest
-            value of int, lost the real value.
-
-            2.Truncation: Java doesn't round the number at number more near, Java only cut the decimal part, for example
-            if you have 3.999999, you lost the .99... and you had only the Integer 3.
-             */
         }
 
     }
