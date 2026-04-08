@@ -8,11 +8,12 @@ public class ConsoleBanners {
                 |          MENU             |
                 -----------------------------
                 | 1) Management employees   |
-                | 2) Search employee        |
-                | 3) Watch employee salary  |
-                | 4) Salary category        |
-                | 5) Employee notes         |
-                | 6) Exit                   |
+                | 2) Management Business    |
+                | 3) Search employee        |
+                | 4) Watch employee salary  |
+                | 5) Salary category        |
+                | 6) Employee notes         |
+                | 7) Exit                   |
                 -----------------------------
                 """
         ;
@@ -38,7 +39,7 @@ public class ConsoleBanners {
 
     }
 
-    public static void managementConsole(){
+    public static void managementEmployee(){
         String console = """
                 -----------------------------
                 |          MENU             |
