@@ -55,4 +55,21 @@ public class ConsoleBanners {
 
         System.out.println(console);
     }
+
+    public static void managementBusiness(){
+        String console = """
+                -----------------------------
+                |          MENU             |
+                -----------------------------
+                | 1) Add new business       |
+                | 2) Watch all businesses   |
+                | 3) Remove business        |
+                | 4) Edit business          |
+                | 5) Back                   |
+                -----------------------------
+                """
+                ;
+
+        System.out.println(console);
+    }
 }
