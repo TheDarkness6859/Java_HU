@@ -86,10 +86,22 @@ public class EmployeeUI {
 
             try {
 
-                System.out.println("what is he/she id? (Attempts remaining: " + tries + "): ");
+                System.out.println("what is he/she id?: ");
                 long id = input.nextLong();
                 input.nextLine();
-                return id;
+
+                if (s.exists(id)){
+
+                    System.out.println("Employee found!");
+                    return id;
+
+                }else {
+
+                    tries --;
+                    System.out.println("Attempts remaining:" + tries);
+                    input.nextLine();
+
+                }
 
             } catch(InputMismatchException err){
 
