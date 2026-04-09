@@ -16,11 +16,7 @@ public class Business {
             return;
         }
 
-        idBusiness.forEach((id, bus) -> {
-
-            System.out.println("ID:" + id + "| Name:" + bus.name());
-
-        });
+        idBusiness.forEach((id, bus) -> System.out.println("ID:" + id + "| Name:" + bus.name()));
 
     }
 
