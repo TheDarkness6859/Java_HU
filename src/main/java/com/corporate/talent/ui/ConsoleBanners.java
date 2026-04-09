@@ -1,8 +1,8 @@
 package com.corporate.talent.ui;
 
-public class ConsoleBanners {
+public interface ConsoleBanners {
 
-    public static void mainConsole (){
+    static void mainConsole (){
         String console = """
                 -----------------------------
                 |          MENU             |
@@ -21,7 +21,7 @@ public class ConsoleBanners {
         System.out.println(console);
     }
 
-    public static void banner(){
+    static void banner(){
         String mainBanner = """
 
             ====================================================
@@ -39,7 +39,7 @@ public class ConsoleBanners {
 
     }
 
-    public static void managementEmployee(){
+    static void managementEmployee(){
         String console = """
                 -----------------------------
                 |          MENU             |
@@ -57,7 +57,7 @@ public class ConsoleBanners {
         System.out.println(console);
     }
 
-    public static void managementBusiness(){
+    static void managementBusiness(){
         String console = """
                 -----------------------------
                 |          MENU             |
@@ -75,7 +75,7 @@ public class ConsoleBanners {
         System.out.println(console);
     }
 
-    public static void employeesData(){
+    static void employeesData(){
         String console = """
                 -----------------------------
                 |          MENU             |
