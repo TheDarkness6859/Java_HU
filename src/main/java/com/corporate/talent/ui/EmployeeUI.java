@@ -154,6 +154,9 @@ public class EmployeeUI {
                         }
                         break;
                     case 5:
+                        employeeReports();
+                        break;
+                    case 6:
                         break;
                 }
 
@@ -164,7 +167,38 @@ public class EmployeeUI {
                 desc = 0;
 
             }
-        } while(desc != 5);
+        } while(desc != 6);
 
+    }
+
+    public void employeeReports(){
+        int desc;
+        do {
+            try {
+
+                ConsoleBanners.employeesData();
+                System.out.println("Which is your decision?:");
+                desc = input.nextInt();
+                input.nextLine();
+
+                switch (desc) {
+                    case 1:
+                        s.employeeReport();
+                        break;
+                    case 2:
+                        s.descEmployee();
+                        break;
+                    case 3:
+                        break;
+                }
+
+            }catch (InputMismatchException err){
+
+                System.err.print("Invalid input! Please enter only numbers.");
+                input.nextLine();
+                desc = 0;
+
+            }
+        } while (desc != 3);
     }
 }
