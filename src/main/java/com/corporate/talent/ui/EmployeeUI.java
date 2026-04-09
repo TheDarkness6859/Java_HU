@@ -28,7 +28,7 @@ public class EmployeeUI {
                 var age = input.nextByte();
 
                 System.out.print("How many he/she scored in the test?: ");
-                var score = input.nextInt();
+                var score = input.nextByte();
 
                 System.out.print("How much is his/her salary?: ");
                 var salary = input.nextDouble();
@@ -121,7 +121,7 @@ public class EmployeeUI {
 
         int desc;
         long id;
-        Employable e = null;
+        Employable e;
 
         do {
             try{
