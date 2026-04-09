@@ -17,11 +17,7 @@ public class Employee {
             return;
         }
 
-        idEmployee.forEach((id, emp) -> {
-
-            System.out.println("ID:" + id + "| Name:" + emp.getFullName());
-
-        });
+        idEmployee.forEach((id, emp) -> System.out.println("ID:" + id + "| Name:" + emp.getFullName()));
 
     }
 
@@ -90,6 +86,41 @@ public class Employee {
             return null;
         }
 
+    }
+
+    public void employeeReport () {
+
+        if(!employees.isEmpty()){
+
+            Employable first = employees.getFirst();
+            Employable last = employees.getLast();
+
+            System.out.println("Your first Employee is: \n ID:" + first.getId() + "| Name:" + first.getFullName());
+            System.out.println("Your last Employee is: \n ID:" + last.getId() + "| Name:" + last.getFullName());
+
+        }else {
+
+            System.out.println("There's no one on the list yet.");
+
+        }
+
+    }
+
+    public void descEmployee(){
+
+        if (!employees.isEmpty()){
+
+            List<Employable> desc = employees.reversed();
+
+            System.out.println("--- Employees in Descending Order ---");
+
+            desc.forEach(emp -> System.out.println("ID:" + emp.getId() + "| Name:" + emp.getFullName()));
+
+        }else {
+
+            System.out.println("There's no one on the list yet.");
+
+        }
     }
 
     public boolean exists(long id) {
