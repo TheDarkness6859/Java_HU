@@ -92,6 +92,13 @@ public class Employee {
 
         if(!employees.isEmpty()){
 
+            //Java 8 (Legacy)
+            /*
+                Employable oldFirst = employees.get(0);
+                Employable oldLast = employees.get(employees.size()-1);
+             */
+
+            //Java 21
             Employable first = employees.getFirst();
             Employable last = employees.getLast();
 
@@ -109,6 +116,11 @@ public class Employee {
     public void descEmployee(){
 
         if (!employees.isEmpty()){
+
+            /*
+                List<Employable> oldCopy = new ArrayList<>(employees);
+                Collections.reverse(oldCopy);
+             */
 
             List<Employable> desc = employees.reversed();
 
