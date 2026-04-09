@@ -135,6 +135,21 @@ public class Employee {
         }
     }
 
+    public void checkEligibility(){
+
+        employees.removeIf(emp -> {
+
+            if (!emp.validateEligibility()) {
+                System.out.println(emp.getFullName() + " is currently ineligible and has been removed from the active list.");
+                return true;
+            }else {
+                return false;
+            }
+
+        });
+
+    }
+
     public boolean exists(long id) {
         return idEmployee.containsKey(id);
     }
