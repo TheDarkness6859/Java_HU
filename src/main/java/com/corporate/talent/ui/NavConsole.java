@@ -46,21 +46,21 @@ public class NavConsole {
                         if (e != null){
                             sal.salary(e);
                         }else {
-                            System.out.println("Please, search for an employee first (Option 2).");
+                            System.out.println("Please, search for an employee first (Option 3).");
                         }
                         break;
                     case 5:
                         if (e != null){
                             sal.obtainSalaryCategory(e);
                         }else {
-                            System.out.println("Please, search for an employee first (Option 2).");
+                            System.out.println("Please, search for an employee first (Option 3).");
                         }
                         break;
                     case 6:
                         if (e != null){
                             per.EmployeeData(e);
                         }else {
-                            System.out.println("Please, search for an employee first (Option 2).");
+                            System.out.println("Please, search for an employee first (Option 3).");
                         }
                         break;
                     case 7:
