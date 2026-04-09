@@ -48,7 +48,8 @@ public class ConsoleBanners {
                 | 2) Watch all employees    |
                 | 3) Remove employee        |
                 | 4) Edit employee          |
-                | 5) Back                   |
+                | 5) Employee reports       |
+                | 6) Back                   |
                 -----------------------------
                 """
         ;
@@ -65,11 +66,28 @@ public class ConsoleBanners {
                 | 2) Watch all businesses   |
                 | 3) Remove business        |
                 | 4) Edit business          |
-                | 5) Back                   |
+                | 5) Business reports       |
+                | 6) Back                   |
                 -----------------------------
                 """
                 ;
 
         System.out.println(console);
     }
+
+    public static void employeesData(){
+        String console = """
+                -----------------------------
+                |          MENU             |
+                -----------------------------
+                | 1) Employees report       |
+                | 2) Employees DESC         |
+                | 3) Back                   |
+                -----------------------------
+                """
+                ;
+
+        System.out.println(console);
+    }
+
 }
