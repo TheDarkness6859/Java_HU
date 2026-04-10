@@ -24,6 +24,10 @@ public class EmployeeUI {
                 System.out.print("What is his/her name?: ");
                 var name = input.nextLine();
 
+                if (!name.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+                    throw new IllegalArgumentException("Only letters and spaces allowed!");
+                }
+
                 System.out.print("What old is he/she?: ");
                 var age = input.nextByte();
 
@@ -71,9 +75,11 @@ public class EmployeeUI {
 
             } catch (InputMismatchException err){
 
-                System.err.print("\n You can't do it");
+                System.out.println("\n You can't do it");
                 input.nextLine();
 
+            } catch (Exception err){
+                System.out.println("Business Error: " + err.getMessage());
             }
         }
     }
@@ -135,6 +141,7 @@ public class EmployeeUI {
                     case 1:
                         e = credentials();
                         s.addEmployee(e);
+                        s.checkEligibility();
                         break;
                     case 2:
                         s.getAllEmployees();
@@ -189,6 +196,9 @@ public class EmployeeUI {
                         s.descEmployee();
                         break;
                     case 3:
+                        s.finalEmployeesData();
+                        break;
+                    case 4:
                         break;
                 }
 
@@ -199,6 +209,6 @@ public class EmployeeUI {
                 desc = 0;
 
             }
-        } while (desc != 3);
+        } while (desc != 4);
     }
 }
