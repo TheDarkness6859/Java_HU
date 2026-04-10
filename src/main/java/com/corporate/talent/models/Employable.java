@@ -12,9 +12,10 @@ public class Employable {
     private double salary;
     private char gender;
     private float bonus;
+    private byte testPoint;
     private boolean isActive;
     private int languageQuantity;
-    private byte testPoint;
+
 
     //In Java, String is an object and isn't part of the primitives.
     private final String fullName;
@@ -47,7 +48,7 @@ public class Employable {
 
     public void setAge(byte age) {
         if (age <= 0 || age >= 105) {
-            System.out.println("it can't possible");
+            throw new IllegalArgumentException("your age is: " +age+ " it can't possible");
         }else{
             this.age = age;
         }
@@ -55,7 +56,7 @@ public class Employable {
 
     public void setOffice(short office) {
         if (office <= 0 || office >= 105) {
-            System.out.println("I don't believe that");
+            throw new IllegalArgumentException("Office:" +office+ "I don't believe that");
         }else{
             this.office = office;
         }
@@ -63,7 +64,7 @@ public class Employable {
 
     public void setSalary(double salary) {
         if (salary <= 0) {
-            System.out.println("I don't believe that");
+            throw new IllegalArgumentException("I don't believe that he/she work free? " + salary);
         }else{
             this.salary = salary;
         }
@@ -73,22 +74,22 @@ public class Employable {
         if (gender == 'M' || gender == 'F' || gender == 'O'){
             this.gender = gender;
         }else{
-            System.out.println("It genre not exist");
+            throw new IllegalArgumentException("It genre not exist: " + gender);
         }
     }
 
     public void setActive(boolean isActive){
         if(isActive && this.testPoint < 50){
-            System.out.println("no can't be active with low score, sorry.");
             this.isActive = false;
+            throw new IllegalArgumentException("no can't be active with low score, sorry:" + testPoint);
         }else {
             this.isActive = isActive;
         }
     }
 
     public void setLanguageQuantity(int languageQuantity){
-        if (languageQuantity < 0 || languageQuantity > 100){
-            System.out.println("It is impossible");
+        if (languageQuantity < 0 || languageQuantity > 30){
+            throw new IllegalArgumentException("It is impossible it quantity of languages: "+ languageQuantity);
         }else{
             this.languageQuantity = languageQuantity;
         }
@@ -96,7 +97,7 @@ public class Employable {
 
     public void setTestPoint(byte testPoint){
         if (testPoint < 0 || testPoint > 100){
-            System.out.println("It is impossible");
+            throw new IllegalArgumentException("It is impossible We only rate since 100: " + testPoint);
         }else{
             this.testPoint = testPoint;
         }
