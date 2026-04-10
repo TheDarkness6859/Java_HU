@@ -1,6 +1,7 @@
 package com.corporate.talent.services;
 
 import com.corporate.talent.models.Employable;
+import com.corporate.talent.ui.ConsoleBanners;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -147,6 +148,29 @@ public class Employee {
             }
 
         });
+
+    }
+
+    public void finalEmployeesData() {
+
+        double totalSalary = 0;
+        int total = idEmployee.size();
+        int competent = employees.size();
+        int declined = total - competent;
+
+        for (Employable e: idEmployee.values()){
+            totalSalary += e.getSalary();
+        }
+
+        if(!idEmployee.isEmpty()){
+
+            var average = totalSalary / idEmployee.size();
+
+            ConsoleBanners.employeesInfo(total, declined, totalSalary, average);
+
+        }else {
+            System.out.println("The registry is empty.");
+        }
 
     }
 
