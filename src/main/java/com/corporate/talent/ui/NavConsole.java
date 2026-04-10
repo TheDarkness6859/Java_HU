@@ -39,6 +39,7 @@ public class NavConsole {
                         intBus.businessDec();
                         break;
                     case 3:
+                        employee.getAllEmployees();
                         id = intEmp.search();
                         e = employee.findEmployee(id);
                         break;
