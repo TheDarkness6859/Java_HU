@@ -80,12 +80,28 @@ public interface ConsoleBanners {
                 -----------------------------
                 |          MENU             |
                 -----------------------------
-                | 1) Employees report       |
+                | 1) Employees first-last   |
                 | 2) Employees DESC         |
-                | 3) Back                   |
+                | 3) Employee report        |
+                | 4) Back                   |
                 -----------------------------
                 """
                 ;
+
+        System.out.println(console);
+    }
+
+    static void employeesInfo(int total, int declined, double salaries, double average) {
+        String console = """
+                -----------------------------
+                |      Employees Data       |
+                -----------------------------
+                | Total Employees: %d
+                | Declined Employees: %d
+                | Total Salaries: $%.2f
+                | Average Salaries: $%.2f
+                -----------------------------
+                """.formatted(total, declined, salaries, average);
 
         System.out.println(console);
     }
