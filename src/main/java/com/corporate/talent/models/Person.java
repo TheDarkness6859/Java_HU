@@ -1,6 +1,6 @@
 package com.corporate.talent.models;
 
-public abstract sealed class Person permits Employable {
+public abstract sealed class Person permits Employable, ExternalConsultor {
 
     protected final String fullName;
     protected long id;
