@@ -1,7 +1,7 @@
 package com.corporate.talent.views;
 
 import com.corporate.talent.models.Employable;
-import com.corporate.talent.services.Employee;
+import com.corporate.talent.services.EmployeeService;
 import com.corporate.talent.ui.ConsoleBanners;
 import com.corporate.talent.utils.ScannerInput;
 
@@ -10,9 +10,9 @@ import java.util.InputMismatchException;
 public class EmployeeView {
 
     private final ScannerInput input;
-    Employee s;
+    EmployeeService s;
 
-    public EmployeeView(Employee employeeShared, ScannerInput input){
+    public EmployeeView(EmployeeService employeeShared, ScannerInput input){
 
         this.s = employeeShared;
         this.input = input;

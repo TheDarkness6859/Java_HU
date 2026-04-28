@@ -2,8 +2,8 @@ package com.corporate.talent.views;
 
 import com.corporate.talent.models.BusinessRecord;
 import com.corporate.talent.models.ExtraBusinessData;
-import com.corporate.talent.services.Business;
-import com.corporate.talent.services.FactoryData;
+import com.corporate.talent.services.BusinessService;
+import com.corporate.talent.services.FactoryDataService;
 import com.corporate.talent.ui.ConsoleBanners;
 import com.corporate.talent.utils.ScannerInput;
 
@@ -12,10 +12,10 @@ import java.util.InputMismatchException;
 public class BusinessView {
 
     private final ScannerInput input;
-    private final FactoryData factory;
-    private final Business bs;
+    private final FactoryDataService factory;
+    private final BusinessService bs;
 
-    public BusinessView(ScannerInput input, FactoryData factory, Business bs){
+    public BusinessView(ScannerInput input, FactoryDataService factory, BusinessService bs){
 
         this.input = input;
         this.factory = factory;

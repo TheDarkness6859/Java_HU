@@ -15,17 +15,17 @@ public class Main {
     public static void main(String[] args) {
 
         //Class:
-        Employee emp = new Employee();
+        EmployeeService emp = new EmployeeService();
 
         //Utils:
         Scanner scanner = new Scanner(System.in);
         ScannerInput input = new ScannerInput(scanner);
 
         //Services:
-        Salary sal = new Salary();
-        Performance perf = new Performance();
-        FactoryData factory = new FactoryData();
-        Business business = new Business();
+        SalaryService sal = new SalaryService();
+        PerformanceService perf = new PerformanceService();
+        FactoryDataService factory = new FactoryDataService();
+        BusinessService business = new BusinessService();
 
         //Views:
         BusinessView businessview = new BusinessView(input, factory, business);

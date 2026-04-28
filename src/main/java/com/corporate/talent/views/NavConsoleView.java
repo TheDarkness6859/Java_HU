@@ -9,16 +9,16 @@ public class NavConsoleView {
 
     private final EmployeeView intEmp;
     private final BusinessView intBus;
-    private final Employee employee;
-    private final Salary sal;
-    private final Performance per;
+    private final EmployeeService employee;
+    private final SalaryService sal;
+    private final PerformanceService per;
     private final ScannerInput input;
 
     public NavConsoleView(EmployeeView intEmp,
                           BusinessView intBus,
-                          Employee employee,
-                          Salary sal,
-                          Performance per,
+                          EmployeeService employee,
+                          SalaryService sal,
+                          PerformanceService per,
                           ScannerInput input){
 
         this.intEmp = intEmp;
