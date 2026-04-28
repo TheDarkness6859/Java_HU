@@ -1,7 +1,7 @@
 package com.corporate.talent.models;
 
 //Java 8 class:
-public class Employable {
+public non-sealed class Employable extends Person{
 
     //Random id for user.
     private long id = 0L;
@@ -17,12 +17,10 @@ public class Employable {
     private int languageQuantity;
 
 
-    //In Java, String is an object and isn't part of the primitives.
-    private final String fullName;
-
     //Constructor.
     public Employable(byte age, short office, double salary, char gender, float bonus,
                       boolean isActive, int languageQuantity, String fullName, byte testPoint){
+        super(fullName);
         setAge(age);
         setOffice(office);
         setSalary(salary);
@@ -31,7 +29,6 @@ public class Employable {
         setTestPoint(testPoint);
         setActive(isActive);
         setLanguageQuantity(languageQuantity);
-        this.fullName = fullName;
     }
 
     public float getBonus(){
@@ -39,7 +36,6 @@ public class Employable {
     }
     public double getSalary() {return salary;}
     public int getLanguageQuantity() {return languageQuantity;}
-    public String getFullName() {return fullName;}
     public long getId() {return id;}
 
     public void setId(long id){
@@ -119,6 +115,7 @@ public class Employable {
         return result;
     }
 
+    @Override
     public boolean validateEligibility(){
 
         return this.testPoint > 60 && this.age >= 18 && this.office >= 1 && this.isActive;
