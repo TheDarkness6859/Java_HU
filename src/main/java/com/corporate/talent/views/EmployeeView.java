@@ -2,17 +2,20 @@ package com.corporate.talent.ui;
 
 import com.corporate.talent.models.Employable;
 import com.corporate.talent.services.Employee;
+import com.corporate.talent.utils.ScannerInput;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
-public class EmployeeUI {
+public class EmployeeView {
 
-    Scanner input = new Scanner(System.in);
+    private final ScannerInput input;
     Employee s;
 
-    public EmployeeUI(Employee employeeShared){
+    public EmployeeView(Employee employeeShared, ScannerInput input){
+
         this.s = employeeShared;
+        this.input = input;
+
     }
 
     public Employable credentials() {
@@ -21,62 +24,45 @@ public class EmployeeUI {
 
             try {
 
-                System.out.print("What is his/her name?: ");
-                var name = input.nextLine();
+                var name = input.readString("What is his/her name?: ");
 
                 if (!name.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
                     throw new IllegalArgumentException("Only letters and spaces allowed!");
                 }
 
-                System.out.print("What old is he/she?: ");
-                var age = input.nextByte();
+                var age = input.readByte("What old is he/she?: ");
 
-                System.out.print("How many he/she scored in the test?: ");
-                var score = input.nextByte();
+                var score = input.readByte("How many he/she scored in the test?: ");
 
-                System.out.print("How much is his/her salary?: ");
-                var salary = input.nextDouble();
+                var salary = input.readDouble("How much is his/her salary?: ");
 
-                System.out.print("How much is his/her bonus?: ");
-                var bonus = input.nextFloat();
+                var bonus = input.readFloat("How much is his/her bonus?: ");
 
-                input.nextLine();
-
-                System.out.print("he/she have a extra bonus? (yes/no): ");
-                var response = input.nextLine();
+                var response = input.readString("he/she have a extra bonus? (yes/no): ");
 
                 if (response.equalsIgnoreCase("yes")) {
 
-                    System.out.println("Amount of extra bonus: ");
-                    float extra = input.nextFloat();
+                    System.out.println();
+                    var extra = input.readFloat("Amount of extra bonus: ");
                     bonus += extra;
-                    input.nextLine();
 
                 }
 
-                System.out.print("what is his/her office?: ");
-                short office = input.nextShort();
-                input.nextLine();
+                var office = input.readShort("what is his/her office?: ");
 
-                System.out.print("He/She is active? (yes/no): ");
-                String response2 = input.nextLine();
+                String response2 = input.readString("He/She is active? (yes/no): ");
 
                 boolean active = response2.equalsIgnoreCase("yes");
 
-                System.out.print("what languages know?: ");
-                int quantity = input.nextInt();
+                int quantity = input.readInt("what languages know?: ");
 
-                System.out.print("What is he gender? (M/F/O): ");
-                char gender = input.next().toUpperCase().charAt(0);
-
-                input.nextLine();
+                char gender = input.readString("What is he gender? (M/F/O): ").toUpperCase().charAt(0);
 
                 return new Employable(age, office, salary, gender, bonus, active, quantity, name, score);
 
             } catch (InputMismatchException err){
 
-                System.out.println("\n You can't do it");
-                input.nextLine();
+                input.readString("\n You can't do it");
 
             } catch (Exception err){
                 System.out.println("Business Error: " + err.getMessage());
@@ -92,9 +78,7 @@ public class EmployeeUI {
 
             try {
 
-                System.out.println("what is he/she id?: ");
-                long id = input.nextLong();
-                input.nextLine();
+                long id = input.readLong("what is he/she id?: ");
 
                 if (s.exists(id)){
 
@@ -105,14 +89,12 @@ public class EmployeeUI {
 
                     tries --;
                     System.out.println("Attempts remaining:" + tries);
-                    input.nextLine();
 
                 }
 
             } catch(InputMismatchException err){
 
                 System.err.print("Invalid input! Please enter only numbers.");
-                input.nextLine();
                 tries --;
 
             }
@@ -121,6 +103,7 @@ public class EmployeeUI {
 
         System.out.println("No more attempts left.");
         return -1;
+
     }
 
     public void employeeDec(){
@@ -133,9 +116,7 @@ public class EmployeeUI {
             try{
 
                 ConsoleBanners.managementEmployee();
-                System.out.println("Which is your decision?:");
-                desc = input.nextInt();
-                input.nextLine();
+                desc = input.readInt("Which is your decision?: ");
 
                 switch (desc){
                     case 1:
@@ -170,7 +151,6 @@ public class EmployeeUI {
             }catch (InputMismatchException err){
 
                 System.err.print("Invalid input! Please enter only numbers.");
-                input.nextLine();
                 desc = 0;
 
             }
@@ -184,9 +164,7 @@ public class EmployeeUI {
             try {
 
                 ConsoleBanners.employeesData();
-                System.out.println("Which is your decision?:");
-                desc = input.nextInt();
-                input.nextLine();
+                desc = input.readInt("Which is your decision?: ");
 
                 switch (desc) {
                     case 1:
@@ -205,7 +183,6 @@ public class EmployeeUI {
             }catch (InputMismatchException err){
 
                 System.err.print("Invalid input! Please enter only numbers.");
-                input.nextLine();
                 desc = 0;
 
             }

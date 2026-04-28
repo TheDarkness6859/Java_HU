@@ -77,4 +77,92 @@ public class ScannerInput {
 
     }
 
+    public short readShort (String prompt){
+
+        while (true) {
+
+            try {
+
+                System.out.println(prompt);
+                short value = input.nextShort();
+                input.nextLine();
+                return value;
+
+            }catch (InputMismatchException err) {
+
+                System.out.println("Error: you need input a valid number!");
+                input.nextLine();
+
+            }
+
+        }
+
+    }
+
+    public byte readByte (String prompt){
+
+        while (true) {
+
+            try {
+
+                System.out.println(prompt);
+                byte value = input.nextByte();
+                input.nextLine();
+                return value;
+
+            }catch (InputMismatchException err) {
+
+                System.out.println("Error: you need input a valid number!");
+                input.nextLine();
+
+            }
+
+        }
+
+    }
+
+    public float readFloat (String prompt){
+
+        while (true) {
+
+            try {
+
+                System.out.println(prompt);
+                float value = input.nextFloat();
+                input.nextLine();
+                return value;
+
+            }catch (InputMismatchException err) {
+
+                System.out.println("Error: you need input a valid number!");
+                input.nextLine();
+
+            }
+
+        }
+
+    }
+
+    public long readLong (String prompt){
+
+        while (true) {
+
+            try {
+
+                System.out.println(prompt);
+                long value = input.nextLong();
+                input.nextLine();
+                return value;
+
+            }catch (InputMismatchException err) {
+
+                System.out.println("Error: you need input a valid number!");
+                input.nextLine();
+
+            }
+
+        }
+
+    }
+
 }
