@@ -1,5 +1,6 @@
 package com.corporate.talent.services;
 import com.corporate.talent.models.Employable;
+import com.corporate.talent.models.PerformanceReport;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,11 +12,11 @@ public class Performance {
         String[] name = {e.getFullName()};
         double [][] notesData = new double[1][3];
 
-        average(name, notesData);
+        average(name, notesData, e.getId());
 
     }
 
-    public void average (String[] name, double [][] notes){
+    public void average (String[] name, double [][] notes, long idEmployee){
 
         Scanner input = new Scanner(System.in);
 
@@ -34,7 +35,10 @@ public class Performance {
 
             double average = totalNotes / notes[u].length;
             String status = (average >= 3.5) ? "PROMOTED" : "NOT PROMOTED";
-            printData (name[u], totalNotes, average, (int) average, status);
+
+            PerformanceReport report = new PerformanceReport(idEmployee,  average, status);
+
+            printData (name[u], totalNotes, report);
 
         }
 
@@ -60,7 +64,7 @@ public class Performance {
         }
     }
 
-    public void printData(String name, double total, double average, int rounded, String status){
+    public void printData(String name, double total, PerformanceReport report){
 
         System.out.printf("""
                 --------Final result--------
@@ -70,8 +74,10 @@ public class Performance {
                 Total result: %d
                 Status: %s
                 ----------------------------
-                """, name, total, average, rounded, status)
+                """, name, total, report.average(), (int) report.average(), report.feedBack())
         ;
+
+        System.out.println("[Performance Report]: " + report);
 
     }
 }
