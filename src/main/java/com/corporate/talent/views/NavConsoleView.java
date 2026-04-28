@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 public class NavConsole {
 
+    private final EmployeeUI intBus = EmployeeUI();
+
+    public NavConsole (){}
     //Instances
     Employee  employee = new Employee();
     EmployeeUI intEmp = new EmployeeUI(employee);
