@@ -1,7 +1,8 @@
-package com.corporate.talent.ui;
+package com.corporate.talent.views;
 
 import com.corporate.talent.models.Employable;
 import com.corporate.talent.services.Employee;
+import com.corporate.talent.ui.ConsoleBanners;
 import com.corporate.talent.utils.ScannerInput;
 
 import java.util.InputMismatchException;

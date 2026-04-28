@@ -1,18 +1,27 @@
-package com.corporate.talent.ui;
+package com.corporate.talent.views;
 
 import com.corporate.talent.models.BusinessRecord;
 import com.corporate.talent.models.ExtraBusinessData;
 import com.corporate.talent.services.Business;
 import com.corporate.talent.services.FactoryData;
+import com.corporate.talent.ui.ConsoleBanners;
+import com.corporate.talent.utils.ScannerInput;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
-public class BusinessUI {
+public class BusinessView {
 
-    Scanner input = new Scanner(System.in);
-    FactoryData factory = new FactoryData();
-    Business bs = new Business();
+    private final ScannerInput input;
+    private final FactoryData factory;
+    private final Business bs;
+
+    public BusinessView(ScannerInput input, FactoryData factory, Business bs){
+
+        this.input = input;
+        this.factory = factory;
+        this.bs = bs;
+
+    }
 
     public BusinessRecord credentials() {
 
@@ -20,19 +29,13 @@ public class BusinessUI {
 
             try {
 
-                System.out.print("What is the name of your company?: ");
-                var name = input.nextLine();
+                var name = input.readString("What is the name of your company?: ");
 
-                System.out.print("What old is your NIT?: ");
-                var nit = input.nextLong();
-                input.nextLine();
+                var nit = input.readLong("What old is your NIT?: ");
 
-                System.out.print("what is the foundation year?, ej: (2001): ");
-                var age = input.nextInt();
-                input.nextLine();
+                var age = input.readInt("what is the foundation year?, ej: (2001): ");
 
-                System.out.print("The business still working? (yes/no): ");
-                var response = input.nextLine().equalsIgnoreCase("yes");
+                var response = input.readString("The business still working? (yes/no): ").equalsIgnoreCase("yes");
 
                 ExtraBusinessData extra = factory.businessInfo();
 
@@ -41,7 +44,6 @@ public class BusinessUI {
             } catch (InputMismatchException err){
 
                 System.err.print("\n Invalid input! Please use numbers where required.");
-                input.nextLine();
 
             }
         }
@@ -57,9 +59,7 @@ public class BusinessUI {
             try{
 
                 ConsoleBanners.managementBusiness();
-                System.out.println("Which is your decision?:");
-                desc = input.nextInt();
-                input.nextLine();
+                desc = input.readInt("Which is your decision?:");
 
                 switch (desc){
                     case 1:
@@ -90,7 +90,6 @@ public class BusinessUI {
             }catch (InputMismatchException err){
 
                 System.err.print("Invalid input! Please enter only numbers.");
-                input.nextLine();
                 desc = 0;
 
             }
@@ -106,9 +105,7 @@ public class BusinessUI {
 
             try {
 
-                System.out.println("what is he/she id?: ");
-                long id = input.nextLong();
-                input.nextLine();
+                long id = input.readLong("what is he/she id?: ");
 
                 if (bs.exists(id)){
 

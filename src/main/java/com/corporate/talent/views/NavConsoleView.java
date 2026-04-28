@@ -7,15 +7,15 @@ import com.corporate.talent.utils.ScannerInput;
 
 public class NavConsoleView {
 
-    private final EmployeeUI intEmp;
-    private final BusinessUI intBus;
+    private final EmployeeView intEmp;
+    private final BusinessView intBus;
     private final Employee employee;
     private final Salary sal;
     private final Performance per;
     private final ScannerInput input;
 
-    public NavConsoleView(EmployeeUI intEmp,
-                          BusinessUI intBus,
+    public NavConsoleView(EmployeeView intEmp,
+                          BusinessView intBus,
                           Employee employee,
                           Salary sal,
                           Performance per,
