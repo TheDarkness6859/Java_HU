@@ -55,4 +55,26 @@ public class ScannerInput {
 
     }
 
+    public double readDouble (String prompt){
+
+        while (true) {
+
+            try {
+
+                System.out.println(prompt);
+                double value = input.nextDouble();
+                input.nextLine();
+                return value;
+
+            }catch (InputMismatchException err) {
+
+                System.out.println("Error: you need input a valid number!");
+                input.nextLine();
+
+            }
+
+        }
+
+    }
+
 }
