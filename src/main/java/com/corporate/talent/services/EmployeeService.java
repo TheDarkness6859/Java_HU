@@ -1,6 +1,8 @@
 package com.corporate.talent.services;
 
+import com.corporate.talent.models.Developer;
 import com.corporate.talent.models.Employable;
+import com.corporate.talent.models.Manager;
 import com.corporate.talent.ui.ConsoleBanners;
 
 import java.util.*;
@@ -10,6 +12,29 @@ public class EmployeeService {
 
     private final ArrayList<Employable> employees = new ArrayList<>();
     private final HashMap<Long, Employable> idEmployee = new HashMap<>();
+
+    public void validateRol (Employable emp){
+
+        if (emp == null) return;
+
+        if (emp instanceof Developer){
+
+            Developer oldDev = (Developer) emp;
+            System.out.println("[Legacy] Language: " + oldDev.getMainLanguage());
+
+        }
+
+        if (emp instanceof Developer dev){
+
+            System.out.println("[Modern] Language: " + dev.getMainLanguage());
+
+        }else if (emp instanceof Manager man){
+
+            System.out.println("[Modern] Budge: " + man.getMonthlyBudget());
+
+        }
+
+    }
 
     public void getAllEmployees() {
 
