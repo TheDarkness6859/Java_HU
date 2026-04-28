@@ -106,4 +106,15 @@ public interface ConsoleBanners {
         System.out.println(console);
     }
 
+    static void employeeDecision () {
+
+        String console = """
+                ----Select Employee Rol----
+                | 1) Developer
+                | 2) Manager
+                """;
+
+        System.out.println(console);
+    }
+
 }
