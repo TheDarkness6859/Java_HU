@@ -4,7 +4,7 @@ import com.corporate.talent.models.ExtraBusinessData;
 
 import java.util.*;
 
-public class FactoryData {
+public class FactoryDataService {
 
     Scanner input = new Scanner(System.in);
 

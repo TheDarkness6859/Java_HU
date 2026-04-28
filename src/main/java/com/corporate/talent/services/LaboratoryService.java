@@ -2,7 +2,7 @@ package com.corporate.talent.services;
 
 import com.corporate.talent.models.Employable;
 
-public class Laboratory {
+public class LaboratoryService {
 
     public void laboratory(){
         System.out.println("laboratory tests:");

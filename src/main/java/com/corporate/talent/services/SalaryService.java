@@ -4,7 +4,7 @@ import com.corporate.talent.models.Employable;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class Salary {
+public class SalaryService {
 
     public void salary (Employable newEmployee) {
 

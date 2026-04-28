@@ -5,7 +5,7 @@ import com.corporate.talent.models.BusinessRecord;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Business {
+public class BusinessService {
 
     HashMap<Long, BusinessRecord> idBusiness = new HashMap<>();
 

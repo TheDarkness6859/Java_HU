@@ -6,7 +6,7 @@ import com.corporate.talent.ui.ConsoleBanners;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Employee {
+public class EmployeeService {
 
     private final ArrayList<Employable> employees = new ArrayList<>();
     private final HashMap<Long, Employable> idEmployee = new HashMap<>();

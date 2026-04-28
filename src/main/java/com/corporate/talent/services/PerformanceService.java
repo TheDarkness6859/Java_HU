@@ -5,7 +5,7 @@ import com.corporate.talent.models.PerformanceReport;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Performance {
+public class PerformanceService {
 
     public void EmployeeData (Employable e){
 
