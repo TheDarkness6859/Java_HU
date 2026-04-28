@@ -1,24 +1,29 @@
-package com.corporate.talent.ui;
+package com.corporate.talent.views;
 
 import com.corporate.talent.models.Employable;
-import com.corporate.talent.services.Employee;
-import com.corporate.talent.services.Performance;
-import com.corporate.talent.services.Salary;
+import com.corporate.talent.services.*;
+import com.corporate.talent.ui.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class NavConsole {
+public class NavConsoleView {
 
-    private final EmployeeUI intBus = EmployeeUI();
+    private final EmployeeUI intEmp;
+    private final BusinessUI intBus;
+    private final Employee employee;
+    private final Salary sal;
+    private final Performance per;
 
-    public NavConsole (){}
-    //Instances
-    Employee  employee = new Employee();
-    EmployeeUI intEmp = new EmployeeUI(employee);
-    BusinessUI intBus = new BusinessUI();
-    Salary sal = new Salary();
-    Performance per = new Performance();
+    public NavConsoleView(EmployeeUI intEmp, BusinessUI intBus, Employee employee, Salary sal, Performance per){
+
+        this.intEmp = intEmp;
+        this.intBus = intBus;
+        this.employee = employee;
+        this.sal = sal;
+        this.per = per;
+
+    }
 
     public void navConsole() {
 
