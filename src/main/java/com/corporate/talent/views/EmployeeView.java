@@ -1,6 +1,8 @@
 package com.corporate.talent.views;
 
+import com.corporate.talent.models.Developer;
 import com.corporate.talent.models.Employable;
+import com.corporate.talent.models.Manager;
 import com.corporate.talent.services.EmployeeService;
 import com.corporate.talent.ui.ConsoleBanners;
 import com.corporate.talent.utils.ScannerInput;
@@ -59,7 +61,21 @@ public class EmployeeView {
 
                 char gender = input.readString("What is he gender? (M/F/O): ").toUpperCase().charAt(0);
 
-                return new Employable(age, office, salary, gender, bonus, active, quantity, name, score);
+                ConsoleBanners.employeeDecision();
+
+                int role = input.readInt("Choice: ");
+
+                if (role == 1){
+
+                    String language = input.readString("What is the main language?: ");
+                    return new Developer(age, office, salary, gender, bonus, active, quantity, name, score, language);
+
+                }else {
+
+                    double budget = input.readDouble("Monthly budget: ");
+                    return new Manager(age, office, salary, gender, bonus, active, quantity, name, score, budget);
+
+                }
 
             } catch (InputMismatchException err){
 
