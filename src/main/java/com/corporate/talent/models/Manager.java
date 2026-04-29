@@ -1,8 +1,8 @@
 package com.corporate.talent.models;
 
-public class Manager extends Employable{
+public class Manager extends Employable implements Promotion{
 
-    private double monthlyBudget;
+    private final double monthlyBudget;
 
     public Manager(byte age,
                    short office,
@@ -18,6 +18,15 @@ public class Manager extends Employable{
 
         super(age, office, salary, gender, bonus, isActive, languageQuantity, fullName, testPoint);
         this.monthlyBudget = monthlyBudget;
+
+    }
+
+    @Override
+    public double calculatePromotion () {
+
+        System.out.println("Calculate budget to ascends to manager" + this.getFullName());
+
+        return this.getSalary() * 0.20;
 
     }
 
