@@ -27,10 +27,10 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
     protected abstract String getReadByIdQuery ();
 
     //Set Query:
-    protected abstract String setSaveParams (PreparedStatement ps, T object) throws SQLException;
-    protected abstract String setDeleteParams (PreparedStatement ps, long id) throws SQLException;
-    protected abstract String setEditParams (PreparedStatement ps, T object) throws SQLException;
-    protected abstract String setReadByIdParams (PreparedStatement ps, long id) throws SQLException;
+    protected abstract void setSaveParams (PreparedStatement ps, T object) throws SQLException;
+    protected abstract void setDeleteParams (PreparedStatement ps, long id) throws SQLException;
+    protected abstract void setEditParams (PreparedStatement ps, T object) throws SQLException;
+    protected abstract void setReadByIdParams (PreparedStatement ps, long id) throws SQLException;
 
     @Override
     public Optional<T> readId (long id) {
