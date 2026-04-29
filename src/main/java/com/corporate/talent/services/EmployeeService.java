@@ -3,6 +3,7 @@ package com.corporate.talent.services;
 import com.corporate.talent.models.Developer;
 import com.corporate.talent.models.Employable;
 import com.corporate.talent.models.Manager;
+import com.corporate.talent.models.Promotion;
 import com.corporate.talent.ui.ConsoleBanners;
 
 import java.util.*;
@@ -199,8 +200,26 @@ public class EmployeeService {
 
     }
 
+    public void showPromotion () {
+
+        System.out.println("\n--- Proyección de Bonos de Ascenso ---");
+
+        for (Employable emp : employees) {
+
+            if (emp instanceof Promotion p) {
+
+                double bonus = p.calculatePromotion();
+                System.out.println("Candidate: " + emp.getFullName() + " | Bonus: $" + bonus);
+
+            }
+        }
+
+
+    }
+
     public boolean exists(long id) {
         return idEmployee.containsKey(id);
     }
+
 }
 
