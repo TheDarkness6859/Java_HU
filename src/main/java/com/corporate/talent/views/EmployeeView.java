@@ -194,6 +194,9 @@ public class EmployeeView {
                         s.finalEmployeesData();
                         break;
                     case 4:
+                        s.showPromotion();
+                        break;
+                    case 5:
                         break;
                 }
 
@@ -203,6 +206,6 @@ public class EmployeeView {
                 desc = 0;
 
             }
-        } while (desc != 4);
+        } while (desc != 5);
     }
 }
