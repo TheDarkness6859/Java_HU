@@ -202,7 +202,12 @@ public class EmployeeService {
 
     public void showPromotion () {
 
-        System.out.println("\n--- Proyección de Bonos de Ascenso ---");
+        if (employees.isEmpty()) {
+            System.out.println("Don't have employee to get bonus.");
+            return;
+        }
+
+        System.out.println("--- Bonus of ascends ---");
 
         for (Employable emp : employees) {
 
