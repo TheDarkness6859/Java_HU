@@ -3,9 +3,6 @@ package com.corporate.talent.models;
 //Java 8 class:
 public non-sealed class Employable extends Person{
 
-    //Random id for user.
-    private long id;
-
     //Features of each user (Primitives).
     private byte age;
     private short office;
@@ -136,4 +133,23 @@ public non-sealed class Employable extends Person{
 
     }
 
+    public byte getAge() {
+        return age;
+    }
+
+    public short getOffice() {
+        return office;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public byte getTestPoint() {
+        return testPoint;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
 }
