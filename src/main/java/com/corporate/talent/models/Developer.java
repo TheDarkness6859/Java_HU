@@ -20,6 +20,23 @@ public class Developer extends Employable implements Promotion{
 
     }
 
+    public Developer (long id,
+                      byte age,
+                      short office,
+                      double salary,
+                      char gender,
+                      float bonus,
+                      boolean isActive,
+                      int languageQuantity,
+                      String fullName,
+                      byte testPoint,
+                      String mainLanguage){
+
+        super(id, age, office, salary, gender, bonus, isActive, languageQuantity, fullName, testPoint);
+        this.mainLanguage = mainLanguage;
+
+    }
+
     @Override
     public double calculatePromotion () {
 

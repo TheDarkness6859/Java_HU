@@ -21,6 +21,24 @@ public class Manager extends Employable implements Promotion{
 
     }
 
+    public Manager(long id,
+                   byte age,
+                   short office,
+                   double salary,
+                   char gender,
+                   float bonus,
+                   boolean isActive,
+                   int languageQuantity,
+                   String fullName,
+                   byte testPoint,
+                   double monthlyBudget) {
+
+
+        super(id, age, office, salary, gender, bonus, isActive, languageQuantity, fullName, testPoint);
+        this.monthlyBudget = monthlyBudget;
+
+    }
+
     @Override
     public double calculatePromotion () {
 

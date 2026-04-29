@@ -4,7 +4,7 @@ package com.corporate.talent.models;
 public non-sealed class Employable extends Person{
 
     //Random id for user.
-    private long id = 0L;
+    private long id;
 
     //Features of each user (Primitives).
     private byte age;
@@ -21,6 +21,20 @@ public non-sealed class Employable extends Person{
     public Employable(byte age, short office, double salary, char gender, float bonus,
                       boolean isActive, int languageQuantity, String fullName, byte testPoint){
         super(fullName);
+        setAge(age);
+        setOffice(office);
+        setSalary(salary);
+        setGender(gender);
+        this.bonus = bonus;
+        setTestPoint(testPoint);
+        setActive(isActive);
+        setLanguageQuantity(languageQuantity);
+    }
+
+    public Employable(long id, byte age, short office, double salary, char gender, float bonus,
+                      boolean isActive, int languageQuantity, String fullName, byte testPoint){
+        super(fullName);
+        this.id = id;
         setAge(age);
         setOffice(office);
         setSalary(salary);
