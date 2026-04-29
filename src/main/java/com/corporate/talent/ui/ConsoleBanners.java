@@ -83,7 +83,8 @@ public interface ConsoleBanners {
                 | 1) Employees first-last   |
                 | 2) Employees DESC         |
                 | 3) Employee report        |
-                | 4) Back                   |
+                | 4) Show bonus             |
+                | 5) Back                   |
                 -----------------------------
                 """
                 ;
