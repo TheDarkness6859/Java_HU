@@ -52,6 +52,9 @@ public class NavConsoleView {
                     employee.getAllEmployees();
                     id = intEmp.search();
                     e = employee.findEmployee(id);
+                    if (e != null){
+                    employee.validateRol(e);
+                    }
                     break;
                 case 4:
                     if (e != null){
