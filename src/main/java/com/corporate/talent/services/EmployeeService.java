@@ -1,18 +1,16 @@
 package com.corporate.talent.services;
 
-import com.corporate.talent.models.Developer;
-import com.corporate.talent.models.Employable;
-import com.corporate.talent.models.Manager;
-import com.corporate.talent.models.Promotion;
+import com.corporate.talent.dao.impl.UserDAOImpl;
+import com.corporate.talent.db.DatabaseConnection;
+import com.corporate.talent.models.*;
 import com.corporate.talent.ui.ConsoleBanners;
+import com.corporate.talent.utils.LogManager;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class EmployeeService {
 
-    private final ArrayList<Employable> employees = new ArrayList<>();
-    private final HashMap<Long, Employable> idEmployee = new HashMap<>();
+    private final UserDAOImpl dao = new UserDAOImpl();
 
     public void validateRol (Employable emp){
 
@@ -37,85 +35,126 @@ public class EmployeeService {
 
     }
 
-    public void getAllEmployees() {
+    public List<Person> getAllEmployees() {
 
-        if (idEmployee.isEmpty()){
-            System.out.println("No employees registered yet");
-            return;
-        }
-
-        idEmployee.forEach((id, emp) -> System.out.println("ID:" + id + "| Name:" + emp.getFullName()));
+            return dao.readAll();
 
     }
 
-    public void addEmployee(Employable emp) {
+    public boolean addEmployee(Employable emp) {
 
-        long id = ThreadLocalRandom.current().nextLong(1, Long.MAX_VALUE);
-        emp.setId(id);
+        try {
 
-        employees.add(emp);
-        idEmployee.put(emp.getId(), emp);
-        System.out.println("Employee added correctly");
+            DatabaseConnection.startTransaction();
+            boolean success = dao.save(emp);
 
-    }
-
-    public void removeEmployee(long id){
-
-        Employable emp = idEmployee.get(id);
-
-        if (emp != null){
-
-            idEmployee.remove(id);
-            employees.remove(emp);
-            System.out.println("Employee deleted correctly");
-
-        }else {
-
-            System.out.println("The employee doesn't exist");
-
-        }
-
-    }
-
-    public void editEmployee (long id, Employable updatedData){
-
-        if (idEmployee.containsKey(id)) {
-
-            updatedData.setId(id);
-            idEmployee.put(id, updatedData);
-
-            for (int i = 0; i < employees.size(); i++ ){
-
-                if (employees.get(i).getId() == id){
-                    employees.set(i, updatedData);
-                    break;
-                }
+            if (success) {
+                DatabaseConnection.commit();
+                return true;
             }
 
-            System.out.println("Employee updated correctly");
+            DatabaseConnection.rollback();
+            return false;
 
-        }else {
+        } catch (Exception e) {
 
-            System.out.println("The Employee ID doesnt exist'");
+            DatabaseConnection.rollback();
+            return false;
+
+        } finally {
+
+            try { DatabaseConnection.closeConnection(); } catch (Exception ignore) {}
+
+        }
+
+    }
+
+    public boolean removeEmployee(long id){
+
+        try {
+
+            DatabaseConnection.startTransaction();
+
+            boolean deleted = dao.delete(id);
+
+            if (deleted) {
+
+                DatabaseConnection.commit();
+                LogManager.addLog("INFO", "Empleado eliminado: " + id);
+                return true;
+
+            }
+
+            DatabaseConnection.rollback();
+            return false;
+
+        }catch (Exception e) {
+
+            DatabaseConnection.rollback();
+            LogManager.addLog("ERROR", "Error al eliminar: " + e.getMessage());
+            return false;
+
+        } finally {
+
+            try { DatabaseConnection.closeConnection(); } catch (Exception ignore) {}
+
+        }
+
+    }
+
+    public boolean editEmployee (Person p){
+
+        try {
+
+            DatabaseConnection.startTransaction();
+
+            boolean updated = dao.edit(p);
+
+            if (updated) {
+
+                DatabaseConnection.commit();
+                LogManager.addLog("INFO", "Empleado actualizado: " + p.getFullName());
+                return true;
+
+            }
+
+            DatabaseConnection.rollback();
+            return false;
+
+        } catch (Exception e) {
+
+            DatabaseConnection.rollback();
+            LogManager.addLog("ERROR", "Error al actualizar: " + e.getMessage());
+            return false;
+
+        } finally {
+
+            try { DatabaseConnection.closeConnection(); } catch (Exception ignore) {}
 
         }
     }
 
-    public Employable findEmployee(long id) {
+    public Person findEmployee(long id) {
 
-        Employable e = idEmployee.get(id);
+        Optional<Person> p = dao.readId(id);
 
-        if (e != null){
-            System.out.println("Employee found, his/her name is:" + e.getFullName());
-            return e;
+        if (p.isPresent()){
+
+            System.out.println("Employee found, his/her name is:" + p.get().getFullName());
+            return p.get();
+
         }else {
+
             System.out.println("Employee don't found!");
             return null;
+
         }
 
     }
 
     public void employeeReport () {
+
+        List<Person> employees = dao.readAll();
 
         if(!employees.isEmpty()){
 
@@ -126,8 +165,8 @@ public class EmployeeService {
              */
 
             //Java 21
-            Employable first = employees.getFirst();
-            Employable last = employees.getLast();
+            Person first = employees.getFirst();
+            Person last = employees.getLast();
 
             System.out.println("Your first Employee is: \n ID:" + first.getId() + "| Name:" + first.getFullName());
             System.out.println("Your last Employee is: \n ID:" + last.getId() + "| Name:" + last.getFullName());
@@ -142,14 +181,16 @@ public class EmployeeService {
 
     public void descEmployee(){
 
+        List<Person> employees = dao.readAll();
+
         if (!employees.isEmpty()){
 
             /*
-                List<Employable> oldCopy = new ArrayList<>(employees);
+                List<Person> oldCopy = new ArrayList<>(Person);
                 Collections.reverse(oldCopy);
              */
 
-            List<Employable> desc = employees.reversed();
+            List<Person> desc = employees.reversed();
 
             System.out.println("--- Employees in Descending Order ---");
 
@@ -163,6 +204,8 @@ public class EmployeeService {
     }
 
     public void checkEligibility(){
+
+        List<Person> employees = dao.readAll();
 
         employees.removeIf(emp -> {
 
@@ -179,28 +222,43 @@ public class EmployeeService {
 
     public void finalEmployeesData() {
 
-        double totalSalary = 0;
-        int total = idEmployee.size();
-        int competent = employees.size();
-        int declined = total - competent;
+        List<Person> employees = dao.readAll();
 
-        for (Employable e: idEmployee.values()){
-            totalSalary += e.getSalary();
-        }
+        if (employees.isEmpty()){
 
-        if(!idEmployee.isEmpty()){
-
-            var average = totalSalary / idEmployee.size();
-
-            ConsoleBanners.employeesInfo(total, declined, totalSalary, average);
-
-        }else {
             System.out.println("The registry is empty.");
+            return;
+
         }
+
+        double totalSalary = 0;
+        int competent = 0;
+        int total = employees.size();
+
+        for (Person p: employees){
+
+            if (p instanceof Employable emp){
+
+                totalSalary += emp.getSalary();
+
+                if (emp.validateEligibility()) {
+                    competent++;
+                }
+
+            }
+
+        }
+
+        int declined = total - competent;
+        double average = totalSalary / total;
+
+        ConsoleBanners.employeesInfo(total, declined, totalSalary, average);
 
     }
 
     public void showPromotion () {
+
+        List<Person> employees = dao.readAll();
 
         if (employees.isEmpty()) {
             System.out.println("Don't have employee to get bonus.");
@@ -209,21 +267,37 @@ public class EmployeeService {
 
         System.out.println("--- Bonus of ascends ---");
 
-        for (Employable emp : employees) {
+        for (Person p : employees) {
 
-            if (emp instanceof Promotion p) {
+            if (p instanceof Promotion pro) {
 
-                double bonus = p.calculatePromotion();
-                System.out.println("Candidate: " + emp.getFullName() + " | Bonus: $" + bonus);
+                double bonus = pro.calculatePromotion();
+                System.out.println("Candidate: " + p.getFullName() + " | Bonus: $" + bonus);
 
             }
         }
 
+    }
+
+    public void purgeIneligible() {
+
+        List<Person> employees = dao.readAll();
+
+        for (Person p : employees) {
+
+            if (!p.validateEligibility()) {
+
+                System.out.println("Removing ineligible: " + p.getFullName());
+                removeEmployee(p.getId());
+
+            }
+
+        }
 
     }
 
     public boolean exists(long id) {
-        return idEmployee.containsKey(id);
+        return dao.readId(id).isPresent();
     }
 
 }
