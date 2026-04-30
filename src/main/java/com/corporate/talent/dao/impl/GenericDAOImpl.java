@@ -47,11 +47,13 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 
                     if (rs.next()){
 
+                        System.out.println("User " + id + " found correctly");
                         LogManager.addLog("INFO", "User " + id + " found correctly");
                         return Optional.of(mapRow(rs));
 
                     }else {
 
+                        System.out.println("User " + id + " don´t found in database");
                         LogManager.addLog("WARNING", "User " + id + " don´t found in database");
                         return Optional.empty();
 
@@ -90,10 +92,12 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 
                 if (users.isEmpty()) {
 
+                    System.out.println("No records found in database");
                     LogManager.addLog("INFO", "getAll executed: No records found in database.");
 
                 } else {
 
+                    System.out.println(users.size() + " records retrieved.");
                     LogManager.addLog("INFO", "getAll executed: " + users.size() + " records retrieved.");
 
                 }
@@ -128,11 +132,13 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 
                 if (rows > 0){
 
+                    System.out.println("Employee deleted correctly" + id);
                     LogManager.addLog("INFO", "User" + id + "Delete correctly");
                     return true;
 
                 }else {
 
+                    System.out.println("The user cannot be delete" + id);
                     LogManager.addLog("WARNING", "The user cannot be delete" + id);
                     return false;
 
@@ -165,11 +171,13 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 
                 if (rows > 0){
 
+                    System.out.println("user updated correctly");
                     LogManager.addLog("INFO", "user updated correctly");
                     return true;
 
                 }else {
 
+                    System.out.println("The user cannot be updated. Check if the ID exists.");
                     LogManager.addLog("WARNING", "The user cannot be updated. Check if the ID exists.");
                     return false;
 

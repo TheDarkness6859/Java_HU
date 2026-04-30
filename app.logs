@@ -1,0 +1,8 @@
+[2026-04-29T20:06:03.586832422] [ERROR]failed to execute readAllERROR: relation "empleados" does not exist
+  Position: 15
+[2026-04-29T20:07:23.051370893] [INFO]getAll executed: No records found in database.
+[2026-04-29T20:13:08.632259911] [WARNING]User 123 don´t found in database
+[2026-04-29T20:13:11.180038449] [WARNING]User 123 don´t found in database
+[2026-04-29T20:13:12.921139993] [WARNING]User 23 don´t found in database
+[2026-04-29T20:13:13.179751134] [WARNING]The user cannot be delete-1
+[2026-04-29T20:13:43.845247362] [INFO]getAll executed: No records found in database.

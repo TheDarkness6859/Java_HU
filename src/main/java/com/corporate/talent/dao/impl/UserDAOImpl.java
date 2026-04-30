@@ -10,15 +10,15 @@ import java.sql.*;
 
 public class UserDAOImpl extends GenericDAOImpl<Person>{
 
-    protected static final String SAVE = "INSERT INTO empleados (nombre, edad, oficina, salario, genero, bonus, puntaje_test, activo, cant_idiomas, rol, lenguaje_principal, presupuesto_mensual) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    protected static final String SAVE = "INSERT INTO employee (nombre, edad, oficina, salario, genero, bonus, puntaje_test, activo, cant_idiomas, rol, lenguaje_principal, presupuesto_mensual) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-    protected static final String DELETE = "DELETE FROM empleados WHERE id = ?;";
+    protected static final String DELETE = "DELETE FROM employee WHERE id = ?;";
 
-    protected static final String UPDATE = "UPDATE empleados SET nombre = ?, edad = ?, oficina = ?, salario = ?, genero = ?, bonus = ?, puntaje_test = ?, activo = ?, cant_idiomas = ?, rol = ?, lenguaje_principal = ?, presupuesto_mensual = ? WHERE id = ?;";
+    protected static final String UPDATE = "UPDATE employee SET nombre = ?, edad = ?, oficina = ?, salario = ?, genero = ?, bonus = ?, puntaje_test = ?, activo = ?, cant_idiomas = ?, rol = ?, lenguaje_principal = ?, presupuesto_mensual = ? WHERE id = ?;";
 
-    protected static final String FIND = "SELECT * FROM empleados;";
+    protected static final String FIND = "SELECT * FROM employee;";
 
-    protected static final String FINDBY = "SELECT * FROM empleados WHERE id = ?;";
+    protected static final String FINDBY = "SELECT * FROM employee WHERE id = ?;";
 
     protected Employable mapRow(ResultSet rs) throws SQLException {
 
@@ -71,6 +71,7 @@ public class UserDAOImpl extends GenericDAOImpl<Person>{
 
                         if (rs.next()) {
 
+                            System.out.println("User save correctly in database");
                             LogManager.addLog("INFO", "User save correctly in database");
                             p.setId(rs.getLong(1));
                             return true;
@@ -81,6 +82,7 @@ public class UserDAOImpl extends GenericDAOImpl<Person>{
 
                 }
 
+                System.out.println("User cannot be saved in database");
                 LogManager.addLog("WARNING", "User cannot be saved in database");
                 return false;
 
