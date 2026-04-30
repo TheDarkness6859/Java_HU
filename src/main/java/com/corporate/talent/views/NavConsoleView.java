@@ -1,5 +1,6 @@
 package com.corporate.talent.views;
 
+import com.corporate.talent.controller.EmployeeController;
 import com.corporate.talent.models.Employable;
 import com.corporate.talent.services.*;
 import com.corporate.talent.ui.*;
@@ -9,14 +10,14 @@ public class NavConsoleView {
 
     private final EmployeeView intEmp;
     private final BusinessView intBus;
-    private final EmployeeService employee;
+    private final EmployeeController employee;
     private final SalaryService sal;
     private final PerformanceService per;
     private final ScannerInput input;
 
     public NavConsoleView(EmployeeView intEmp,
                           BusinessView intBus,
-                          EmployeeService employee,
+                          EmployeeController employee,
                           SalaryService sal,
                           PerformanceService per,
                           ScannerInput input){
@@ -49,9 +50,9 @@ public class NavConsoleView {
                     intBus.businessDec();
                     break;
                 case 3:
-                    employee.getAllEmployees();
+                    employee.findAll();
                     id = intEmp.search();
-                    e = employee.findEmployee(id);
+                    e = employee.findById(id);
                     if (e != null){
                     employee.validateRol(e);
                     }

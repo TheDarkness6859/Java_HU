@@ -1,5 +1,6 @@
 package com.corporate.talent.views;
 
+import com.corporate.talent.controller.EmployeeController;
 import com.corporate.talent.models.Developer;
 import com.corporate.talent.models.Employable;
 import com.corporate.talent.models.Manager;
@@ -12,11 +13,11 @@ import java.util.InputMismatchException;
 public class EmployeeView {
 
     private final ScannerInput input;
-    EmployeeService s;
+    EmployeeController c;
 
-    public EmployeeView(EmployeeService employeeShared, ScannerInput input){
+    public EmployeeView(EmployeeController c, ScannerInput input){
 
-        this.s = employeeShared;
+        this.c = c;
         this.input = input;
 
     }
@@ -97,7 +98,7 @@ public class EmployeeView {
 
                 long id = input.readLong("what is he/she id?: ");
 
-                if (s.exists(id)){
+                if (c.exists(id)){
 
                     System.out.println("Employee found!");
                     return id;
@@ -138,22 +139,22 @@ public class EmployeeView {
                 switch (desc){
                     case 1:
                         e = credentials();
-                        s.addEmployee(e);
-                        s.checkEligibility();
+                        c.create(e);
+                        c.eligibility();
                         break;
                     case 2:
-                        s.getAllEmployees();
+                        c.findAll();
                         break;
                     case 3:
                         id = search();
-                        s.removeEmployee(id);
+                        c.delete(id);
                         break;
                     case 4:
                         id = search();
-                        if (s.exists(id)){
+                        if (c.exists(id)){
                             System.out.println("--- Edit Employee Data ---");
                             Employable data = credentials();
-                            s.editEmployee(id, data);
+                            c.edit(data);
                         }else{
                             System.out.println("The employee ID doesn't exist.");
                         }
@@ -185,16 +186,16 @@ public class EmployeeView {
 
                 switch (desc) {
                     case 1:
-                        s.employeeReport();
+                        c.getShowFirstLast();
                         break;
                     case 2:
-                        s.descEmployee();
+                        c.getDescEmployees();
                         break;
                     case 3:
-                        s.finalEmployeesData();
+                        c.getReport();
                         break;
                     case 4:
-                        s.showPromotion();
+                        c.getPromotionBonuses();
                         break;
                     case 5:
                         break;
