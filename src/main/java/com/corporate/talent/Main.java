@@ -1,5 +1,6 @@
 package com.corporate.talent;
 
+import com.corporate.talent.controller.EmployeeController;
 import com.corporate.talent.services.*;
 import com.corporate.talent.views.BusinessView;
 import com.corporate.talent.ui.ConsoleBanners;
@@ -27,10 +28,13 @@ public class Main {
         FactoryDataService factory = new FactoryDataService();
         BusinessService business = new BusinessService();
 
+        //Controllers:
+        EmployeeController empCon = new EmployeeController();
+
         //Views:
         BusinessView businessview = new BusinessView(input, factory, business);
-        EmployeeView employeeView = new EmployeeView(emp , input);
-        NavConsoleView console = new NavConsoleView(employeeView, businessview, emp, sal, perf, input);
+        EmployeeView employeeView = new EmployeeView(empCon , input);
+        NavConsoleView console = new NavConsoleView(employeeView, businessview, empCon, sal, perf, input);
 
 
         ConsoleBanners.banner();
